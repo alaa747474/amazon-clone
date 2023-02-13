@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "994317297594",
+    "project_id": "ama-zon-clone-app",
+    "storage_bucket": "ama-zon-clone-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994317297594:android:bea0c167acb3308c3d1f83",
+        "android_client_info": {
+          "package_name": "com.example.flutter_amazon_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994317297594-utb6r3rqsb3k1ooukv9bva9ko125h2oe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl8rDImY_xgjd7dMmIHUXACJMou-Hb8D0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994317297594-utb6r3rqsb3k1ooukv9bva9ko125h2oe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

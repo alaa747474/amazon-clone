@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +10,14 @@ import 'package:flutter_amazon_app/features/home/presentation/screens/home_scree
 import 'package:flutter_amazon_app/firebase_options.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-void main() async{
+void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
   runApp(const MyApp());
 }
 
@@ -27,21 +26,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => HomeCubit(),
-        ),
-       BlocProvider(
-        create: (context) => CategoryCubit(CategoryRepository(FirebaseFirestore.instance))..getAllCategories(),
-        child: Container(),
-       )
-      ],
-      child: MaterialApp(
-      title: 'Amazon app',
-      theme: AppTheme.theme(),
-      home:const HomeScreen(),
-    ),
-    );
+        providers: [
+          BlocProvider(
+            create: (context) => HomeCubit(),
+          ),
+          BlocProvider(
+            create: (context) =>
+                CategoryCubit(CategoryRepository(FirebaseFirestore.instance))
+                  ..getAllCategories(),
+            child: Container(),
+          )
+        ],
+        child: ScreenUtilInit(
+            designSize: const Size(360, 690),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (context, child) {
+              return MaterialApp(
+                title: 'Amazon app',
+                theme: AppTheme.theme(),
+                home: const HomeScreen(),
+              );
+            }));
   }
 }
-

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryContainer extends StatelessWidget {
   const CategoryContainer(
@@ -7,10 +8,12 @@ class CategoryContainer extends StatelessWidget {
   final String categoryImage;
   @override
   Widget build(BuildContext context) {
+    final mqHeight =MediaQuery.of(context).size.height;
+    final mqWidth =MediaQuery.of(context).size.width;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-      width: 150,
-      height: 170,
+      width:mqWidth/2.5,
+      height: mqHeight/6,
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -19,28 +22,29 @@ class CategoryContainer extends StatelessWidget {
                 spreadRadius: 2,
                 color: Theme.of(context).shadowColor.withOpacity(0.2))
           ],
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(5.r),
           color: Theme.of(context).primaryColorLight),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 10, left: 10),
+            padding:  EdgeInsets.only(top: mqHeight*0.01, left: mqWidth*0.02),
             child: Text(
               categoryName,
               style: Theme.of(context).textTheme.headline3,
             ),
           ),
           Container(
-            height: 160,
+            height: 130.h,
             width: double.maxFinite,
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(5),
                     bottomRight: Radius.circular(5)),
                 image: DecorationImage(
-                    image: NetworkImage(categoryImage), fit: BoxFit.cover)),
+                    image: NetworkImage(categoryImage), fit: BoxFit.cover)
+                    ),
           )
         ],
       ),

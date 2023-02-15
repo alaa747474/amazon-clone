@@ -36,7 +36,7 @@ class BestSellerProducstContainer extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 10.h),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        mainAxisExtent: 170.h,
+                        mainAxisExtent: 160.h,
                         mainAxisSpacing: 5.h,
                         crossAxisSpacing: 5.h),
                     itemCount: 4,
@@ -62,6 +62,7 @@ class BestSellerProducstContainer extends StatelessWidget {
                               ),
                               Text(
                                 bestSellerProducts[index].name,
+                                overflow: TextOverflow.ellipsis,
                                 style: Theme.of(context).textTheme.headline4,
                               ),
                                 ],

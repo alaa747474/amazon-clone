@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
+import 'package:flutter_amazon_app/core/widgets/custom_search_field.dart';
 import 'package:flutter_amazon_app/features/category/presentation/widgets/best_seller_container.dart';
 import 'package:flutter_amazon_app/features/category/presentation/widgets/category_stack.dart';
-import 'package:flutter_amazon_app/features/category/presentation/widgets/electronics_discount_container.dart';
+import 'package:flutter_amazon_app/features/category/presentation/widgets/discount_container.dart';
 import 'package:flutter_amazon_app/features/category/presentation/widgets/sign_in_suggestion_container.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -11,21 +14,22 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQueryHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar:  CustomAppBar(appBarHeight:65.h,child: const CustomSearchField(),alignment: Alignment.bottomCenter,),
       body: ListView(
         children: [
           const CategoryStack(),
-          SizedBox(
-            height: mediaQueryHeight / 6.5,
-          ),
+          SizedBox(height: mediaQueryHeight / 6.5,),
           const SignInSuggestionContainer(),
-          SizedBox(
-            height: mediaQueryHeight / 95,
-          ),
+          SizedBox(height: mediaQueryHeight / 95,),
           const BestSellerProducstContainer(),
-          SizedBox(
-            height: mediaQueryHeight / 95,
-          ),
-          const ElectronicsDiscountContainer(),
+          SizedBox(height: mediaQueryHeight / 95,),
+          const DiscountContainer(category: 'Electronics',price: 300,),
+          SizedBox(height: mediaQueryHeight / 95,),
+          const DiscountContainer(category: "Women's Fashion",price: 70,),
+          SizedBox(height: mediaQueryHeight / 95,),
+          const DiscountContainer(category: "Men's Fashion",price: 120,),
+          SizedBox(height: mediaQueryHeight / 95,),
+          const DiscountContainer(category: "Kids Fashion",price: 90,),
         ],
       ),
     );

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/loading_indicator.dart';
 import 'package:flutter_amazon_app/features/product/business_logic/cubit/product_cubit.dart';
+import 'package:flutter_amazon_app/features/product/presentation/screens/products_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ElectronicsDiscountContainer extends StatelessWidget {
-  const ElectronicsDiscountContainer({
-    Key? key,
+class DiscountContainer extends StatelessWidget {
+  const DiscountContainer({
+    Key? key, required this.category, required this.price,
   }) : super(key: key);
+  final String category;
+  final double price;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,14 +24,14 @@ class ElectronicsDiscountContainer extends StatelessWidget {
             return const Center(child: LoadingIndicator(),);
           }
           if (state is ProductLoaded) {
-            final electronicsProductsUnder300$ = state.products
-                .where((element) => element.category=='Electronics' && element.price<300)
+            final discountProducts = state.products
+                .where((element) => element.category==category && element.price<price)
                 .toList();
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Electronics Under 300\$',
+                  '$category Under $price\$',
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 Flexible(
@@ -44,13 +47,16 @@ class ElectronicsDiscountContainer extends StatelessWidget {
                         crossAxisSpacing: 5.h),
                     itemCount: 4,
                     itemBuilder: (BuildContext context, int index) {
-                      return Image.network(electronicsProductsUnder300$[index].image);
+                      return Image.network(discountProducts[index].image);
                     },
                   ),
                 ),
-                Text(
-                  'Sea all daels',
-                  style: Theme.of(context).textTheme.headline5,
+                InkWell(
+                  onTap: ()=>Navigator.pushNamed(context, ProductsScreen.routeName,arguments: discountProducts),
+                  child: Text(
+                    'Sea more',
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
                 ),
               ],
             );

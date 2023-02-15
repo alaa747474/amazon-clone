@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_app/core/router/app_router.dart';
 import 'package:flutter_amazon_app/core/utils/theme.dart';
 import 'package:flutter_amazon_app/features/category/business_logic/cubit/category_cubit.dart';
 import 'package:flutter_amazon_app/features/category/data/repository/category_repository.dart';
@@ -46,9 +47,12 @@ class MyApp extends StatelessWidget {
             splitScreenMode: true,
             builder: (context, child) {
               return MaterialApp(
+                onGenerateRoute: AppRouter.generateRoute,
+                initialRoute: HomeScreen.routeName,
                 title: 'Amazon app',
                 theme: AppTheme.theme(),
-                home: const HomeScreen(),
+                debugShowCheckedModeBanner: false,
+                
               );
             }));
   }

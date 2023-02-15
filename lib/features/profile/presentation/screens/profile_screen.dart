@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class ProfileScreen extends StatelessWidget {
@@ -7,7 +9,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Profile'),),
+      appBar:  CustomAppBar(alignment: Alignment.center,appBarHeight:100.h,child: SizedBox(),),
     );
   }
 }

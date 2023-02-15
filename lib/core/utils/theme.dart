@@ -47,13 +47,13 @@ static TextTheme textTheme() {
     ),
     headline6: TextStyle(
       color: Colors.black,
-      fontSize: 14.sp,
+      fontSize: 16.sp,
     ),
     bodyText1: TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.normal,
-      height: 1.75.h,
-      fontSize: 10.sp,
+      
+      fontSize:14.sp,
     ),
     bodyText2: TextStyle(
       color: Colors.black,

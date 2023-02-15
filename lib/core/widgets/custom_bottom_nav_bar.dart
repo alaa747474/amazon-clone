@@ -21,7 +21,7 @@ class CustomBottomNavBar extends StatelessWidget {
                 spreadRadius: 2
               )
             ],
-            border: const Border(top: BorderSide(color: Colors.black, width: 0.5))
+            border: const Border(top: BorderSide(color: Colors.black, width: 0.2))
           ),
           child: BottomNavigationBar(
               onTap: (currentIndex) {

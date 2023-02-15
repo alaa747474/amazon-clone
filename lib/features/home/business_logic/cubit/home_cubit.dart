@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_amazon_app/features/category/presentation/screens/products_screen.dart';
+import 'package:flutter_amazon_app/features/category/presentation/screens/categories_screen.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_amazon_app/features/cart/presentation/screens/cart_screen.dart';
 import 'package:flutter_amazon_app/features/profile/presentation/screens/profile_screen.dart';

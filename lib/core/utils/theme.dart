@@ -42,12 +42,12 @@ static TextTheme textTheme() {
       fontSize: 16.sp,
     ),
     headline5: TextStyle(
-      color: Colors.black,
-      fontSize: 14.sp,
+      color:const Color.fromARGB(255,6,126,146),
+      fontSize: 16.sp,
     ),
     headline6: TextStyle(
       color: Colors.black,
-      fontSize: 12.sp,
+      fontSize: 14.sp,
     ),
     bodyText1: TextStyle(
       color: Colors.black,

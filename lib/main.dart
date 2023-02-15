@@ -6,6 +6,8 @@ import 'package:flutter_amazon_app/features/category/business_logic/cubit/catego
 import 'package:flutter_amazon_app/features/category/data/repository/category_repository.dart';
 import 'package:flutter_amazon_app/features/home/business_logic/cubit/home_cubit.dart';
 import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
+import 'package:flutter_amazon_app/features/product/business_logic/cubit/product_cubit.dart';
+import 'package:flutter_amazon_app/features/product/data/repository/product_repository.dart';
 
 import 'package:flutter_amazon_app/firebase_options.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +37,8 @@ class MyApp extends StatelessWidget {
                 CategoryCubit(CategoryRepository(FirebaseFirestore.instance))
                   ..getAllCategories(),
             child: Container(),
-          )
+          ),
+          BlocProvider(create:(context)=> ProductCubit(ProductRepository(FirebaseFirestore.instance))..getAllProducts(),)
         ],
         child: ScreenUtilInit(
             designSize: const Size(360, 690),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/loading_indicator.dart';
 import 'package:flutter_amazon_app/features/category/business_logic/cubit/category_cubit.dart';
 import 'package:flutter_amazon_app/features/category/presentation/widgets/category_container.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

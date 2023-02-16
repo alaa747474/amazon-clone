@@ -14,7 +14,7 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQueryHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar:  CustomAppBar(appBarHeight:65.h,child: const CustomSearchField(),alignment: Alignment.bottomCenter,),
+      appBar:  CustomAppBar(appBarHeight:65.h,alignment: Alignment.bottomCenter,child: const CustomSearchField(),),
       body: ListView(
         children: [
           const CategoryStack(),

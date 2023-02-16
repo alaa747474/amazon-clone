@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_amazon_app/core/widgets/custom_button.dart';
+import 'package:flutter_amazon_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInSuggestionContainer extends StatelessWidget {
@@ -10,17 +11,31 @@ class SignInSuggestionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:  EdgeInsets.symmetric(horizontal: 10.w,vertical: 7.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 7.h),
       height: 105.h,
-      width: MediaQuery.of(context).size.width,  
+      width: MediaQuery.of(context).size.width,
       color: Theme.of(context).primaryColorLight,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Sign in for the best experience',style: Theme.of(context).textTheme.headline2,),
-          CustomButton(mqWidth: MediaQuery.of(context).size.width,text: 'Sign in securly',onPressed: (){},),
-          Text('create an account',style: Theme.of(context).textTheme.headline4!.copyWith(color: Theme.of(context).focusColor),),
+          Text(
+            'Sign in for the best experience',
+            style: Theme.of(context).textTheme.headline2,
+          ),
+          CustomButton(
+            mqWidth: MediaQuery.of(context).size.width,
+            text: 'Sign in securly',
+            onPressed: () =>
+                Navigator.pushNamed(context, SignInScreen.routeName),
+          ),
+          Text(
+            'create an account',
+            style: Theme.of(context)
+                .textTheme
+                .headline4!
+                .copyWith(color: Theme.of(context).focusColor),
+          ),
         ],
       ),
     );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
-  const CustomAppBar({super.key,required this.appBarHeight, required this.child, required this.alignment});
+  const CustomAppBar({super.key,required this.appBarHeight, required this.alignment, required this.child,});
  final double appBarHeight;
  final Widget child;
  final AlignmentGeometry alignment;
@@ -18,6 +18,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      
       padding:const EdgeInsets.all(10),
       alignment: widget.alignment,
       decoration: BoxDecoration(
@@ -25,15 +26,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               
-              colors: [
+              colors:widget.appBarHeight<90 ?[
             Theme.of(context).primaryColor,
-            Theme.of(context).primaryColor.withOpacity(0.5),
             Theme.of(context).backgroundColor,
+              ]: [
+            Theme.of(context).primaryColor,
+            Theme.of(context).primaryColor.withOpacity(0.8),
+            Theme.of(context).backgroundColor,
+            Theme.of(context).backgroundColor.withOpacity(0.9),
             Theme.of(context).backgroundColor.withOpacity(0.8),
-            Theme.of(context).backgroundColor.withOpacity(0.6),
-            //Theme.of(context).backgroundColor.withOpacity(0.4),
-            //Theme.of(context).backgroundColor.withOpacity(0.1),
-            //Theme.of(context).backgroundColor.withOpacity(0.05),
             Theme.of(context).scaffoldBackgroundColor
           ])),
       child: widget.child,

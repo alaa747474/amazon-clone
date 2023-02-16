@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class ContinueButton extends StatelessWidget {
-  const ContinueButton({super.key});
-
+  const ContinueButton({super.key, required this.onPressed});
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,7 +19,7 @@ class ContinueButton extends StatelessWidget {
             elevation: 0,
             backgroundColor: Theme.of(context).highlightColor
           ),
-            onPressed: () {},
+            onPressed: onPressed,
             child: Text(
               'Continue',
               style: Theme.of(context)

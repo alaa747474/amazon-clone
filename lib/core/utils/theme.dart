@@ -15,6 +15,7 @@ class AppTheme {
     scaffoldBackgroundColor: const Color.fromARGB(255, 233, 233, 233),
     shadowColor: Colors.black,
     primaryColorLight: Colors.white,
+    highlightColor:const Color.fromARGB(255, 246,207,112),
     textTheme: textTheme(),
   );
 }

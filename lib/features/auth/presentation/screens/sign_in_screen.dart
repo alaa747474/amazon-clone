@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
+import 'package:flutter_amazon_app/features/auth/presentation/widgets/continue_button.dart';
+import 'package:flutter_amazon_app/features/auth/presentation/widgets/custom_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
@@ -55,7 +57,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               Container(
                 width: double.maxFinite,
-                height: 400.h,
+                
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.r),
                   color: Theme.of(context).primaryColorLight,
@@ -70,8 +72,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 ExpansionTile(
                   leading: const Icon(Icons.radio_button_off),
                   collapsedIconColor: Theme.of(context).shadowColor,
-                  iconColor: Colors.orange,
-                  collapsedBackgroundColor: Theme.of(context).hintColor.withOpacity(0.2),
+                  iconColor: Theme.of(context).highlightColor,
+                  collapsedBackgroundColor: Theme.of(context).hoverColor,
                   trailing:const SizedBox(),
                   onExpansionChanged: (value) {
                     if (value ==true) {
@@ -86,31 +88,28 @@ class _SignInScreenState extends State<SignInScreen> {
                     Container(
                       padding: EdgeInsets.all(10.h),
                       width: double.maxFinite,
-                    
                       child: SingleChildScrollView(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children:[
-                             Text('Email',style: Theme.of(context).textTheme.headline4,),
-                            const CustomTextField(),
+                            const CustomTextField(title: 'First and last name',),
                             SizedBox(height: 10.h,),
-                             Text('Password',style: Theme.of(context).textTheme.headline4,),
-                            const CustomTextField(),
-                            SizedBox(
-                              width: double.maxFinite,
-                              height: 60,
-                              child: ElevatedButton(onPressed: (){}, child: Text('Continue')))
+                            const CustomTextField(title: 'Email',),
+                            SizedBox(height: 15.h,),
+                            const CustomTextField(title: 'Create a password',),
+                            SizedBox(height: 15.h,),
+                            const ContinueButton(),
                           ],
                         ),
                       ),
                     )
+                    
                   ]
                 ),
                 ExpansionTile(
                      leading: const Icon(Icons.radio_button_off),
                   collapsedIconColor: Theme.of(context).shadowColor,
-                  iconColor: Colors.orange,
-                  collapsedBackgroundColor: Theme.of(context).hintColor.withOpacity(0.2),
+                  iconColor: Theme.of(context).highlightColor,
+                  collapsedBackgroundColor: Theme.of(context).hoverColor,
                   trailing:const SizedBox(),
                   onExpansionChanged: (value) {
                     if (value ==true) {
@@ -123,9 +122,19 @@ class _SignInScreenState extends State<SignInScreen> {
                   title: Text('sign in',style: Theme.of(context).textTheme.headline3,),
                   children: [
                     Container(
+                      padding: EdgeInsets.all(10.h),
                       width: double.maxFinite,
-                      height: 305.h,
-                      color: Colors.amber,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children:[
+                            const CustomTextField(title: 'Email',),
+                            SizedBox(height: 10.h,),
+                            const CustomTextField(title: 'Password',),
+                            SizedBox(height: 15.h,),
+                            const ContinueButton(),
+                          ],
+                        ),
+                      ),
                     )
                   ]),
                   
@@ -139,26 +148,4 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 }
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Theme.of(context).hintColor
-          )
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.orange
-          )
-        ),
-      ),
-    );
-  }
-}

@@ -1,9 +1,16 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_app/features/auth/business_logic/create_account_cubit/create_account_cubit.dart';
+import 'package:flutter_amazon_app/features/auth/business_logic/sign_in_cubit/sign_in_cubit.dart';
+import 'package:flutter_amazon_app/features/auth/data/repository/create_account_repository.dart';
+import 'package:flutter_amazon_app/features/auth/data/repository/sign_in_repository.dart';
 import 'package:flutter_amazon_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
 import 'package:flutter_amazon_app/features/product/presentation/screens/products_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   static Route generateRoute(RouteSettings settings){
@@ -12,7 +19,18 @@ class AppRouter {
       final products= settings.arguments as List<Product>;
       return MaterialPageRoute(builder: (_)=>ProductsScreen(products: products,));
       case SignInScreen.routeName:
-      return MaterialPageRoute(builder: (_)=>const SignInScreen());
+      return MaterialPageRoute(builder: (_)=>
+      MultiBlocProvider(
+        providers: [
+           BlocProvider(
+            create: (context) => CreateAccountCubit(CreateAccountRepository(FirebaseAuth.instance, FirebaseFirestore.instance)),
+          ),
+         BlocProvider(
+            create: (context) => SignInCubit(SignInRepository(FirebaseAuth.instance,)),
+          ),
+        ],
+        child:const SignInScreen() ,
+      )  );   
     }
     return MaterialPageRoute(builder: (_)=>const HomeScreen());
   }

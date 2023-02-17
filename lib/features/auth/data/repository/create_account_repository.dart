@@ -8,10 +8,12 @@ class CreateAccountRepository extends BaseCreateAccountRepository {
   final FirebaseFirestore _firebaseFirestore;
   CreateAccountRepository(this._firebaseAuth, this._firebaseFirestore);
   @override
-  Future<void> createAccount({required UserModel userModel}) async{ 
-   await _firebaseAuth.createUserWithEmailAndPassword(email: userModel.email, password: userModel.password);
-   _firebaseFirestore.collection('users').doc(_firebaseAuth.currentUser!.uid).set(userModel.toMap());
+  Future<void> createAccount({required UserModel userModel}) async {
+    await _firebaseAuth.createUserWithEmailAndPassword(
+        email: userModel.email, password: userModel.password);
+    _firebaseFirestore
+        .collection('users')
+        .doc(_firebaseAuth.currentUser!.uid)
+        .set({'name': userModel.name, 'email': userModel.email});
   }
-  
- 
 }

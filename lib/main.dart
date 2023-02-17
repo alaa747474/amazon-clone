@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/router/app_router.dart';
 import 'package:flutter_amazon_app/core/utils/theme.dart';
+import 'package:flutter_amazon_app/features/auth/business_logic/create_account_cubit/create_account_cubit.dart';
+import 'package:flutter_amazon_app/features/auth/data/repository/create_account_repository.dart';
 import 'package:flutter_amazon_app/features/category/business_logic/cubit/category_cubit.dart';
 import 'package:flutter_amazon_app/features/category/data/repository/category_repository.dart';
 import 'package:flutter_amazon_app/features/home/business_logic/cubit/home_cubit.dart';
@@ -39,7 +42,10 @@ class MyApp extends StatelessWidget {
                   ..getAllCategories(),
             child: Container(),
           ),
-          BlocProvider(create:(context)=> ProductCubit(ProductRepository(FirebaseFirestore.instance))..getAllProducts(),)
+          BlocProvider(create:(context)=> ProductCubit(ProductRepository(FirebaseFirestore.instance))..getAllProducts(),),
+          BlocProvider(
+            create: (context) => CreateAccountCubit(CreateAccountRepository(FirebaseAuth.instance, FirebaseFirestore.instance)),
+          )
         ],
         child: ScreenUtilInit(
             designSize: const Size(360, 690),

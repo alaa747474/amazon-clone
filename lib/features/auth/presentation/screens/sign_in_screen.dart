@@ -59,92 +59,97 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ),
               Container(
-                  width: double.maxFinite,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.r),
-                    color: Theme.of(context).primaryColorLight,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Theme.of(context).hintColor,
-                          spreadRadius: 0.5),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      CustomExpansionTile(
-                        key: item1Key,
-                        onExpansionChanged: (value) {
-                          if (value == true) {
-                            setState(() {
-                              item2Key = UniqueKey();
-                            });
-                          }
-                        },
-                        title: 'Create account',
-                        child: Column(
-                          children: [
-                            const CustomTextField(
-                              title: 'First and last name',
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            const CustomTextField(
-                              title: 'Email',
-                            ),
-                            SizedBox(
-                              height: 15.h,
-                            ),
-                            const CustomTextField(
-                              title: 'Create a password',
-                            ),
-                            SizedBox(
-                              height: 15.h,
-                            ),
-                            ContinueButton(onPressed: (){},),
-                          ],
-                        ),
+                width: double.maxFinite,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.r),
+                  color: Theme.of(context).primaryColorLight,
+                  boxShadow: [
+                    BoxShadow(
+                        color: Theme.of(context).hintColor, spreadRadius: 0.5),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    CustomExpansionTile(
+                      key: item1Key,
+                      onExpansionChanged: (value) {
+                        if (value == true) {
+                          setState(() {
+                            item2Key = UniqueKey();
+                          });
+                        }
+                      },
+                      title: 'Create account',
+                      child: Column(
+                        children: [
+                          const CustomTextField(
+                            title: 'First and last name',
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          const CustomTextField(
+                            title: 'Email',
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          const CustomTextField(
+                            title: 'Create a password',
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          ContinueButton(
+                            onPressed: () {},
+                          ),
+                        ],
                       ),
-                      CustomExpansionTile(
-                        key: item2Key,
-                        onExpansionChanged: (value) {
-                          if (value == true) {
-                            setState(() {
-                              item1Key = UniqueKey();
-                            });
-                          }
-                        },
-                        title: 'Sign in',
-                        child: Column(
-                          children: [
-                            Column(
-                              children: [
-                                 CustomTextField(
-                                  validator: (value){
-                                    return null;
-                                  },
-                                  title: 'Email',
-                                ),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
-                                CustomTextField(
-                                  validator: (value){
-                                    return null;
-                                  },
-                                  title: 'Password',
-                                ),
-                                SizedBox(
-                                  height: 15.h,
-                                ),
-                                 ContinueButton(onPressed: (){},),
-                              ],
-                            ),
-                          ],
-                        ),
+                    ),
+                    CustomExpansionTile(
+                      key: item2Key,
+                      onExpansionChanged: (value) {
+                        if (value == true) {
+                          setState(() {
+                            item1Key = UniqueKey();
+                          });
+                        }
+                      },
+                      title: 'Sign in',
+                      child: Column(
+                        children: [
+                          Column(
+                            children: [
+                              CustomTextField(
+                                validator: (value) {
+                                  return null;
+                                },
+                                title: 'Email',
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              CustomTextField(
+                                validator: (value) {
+                                  return null;
+                                },
+                                title: 'Password',
+                              ),
+                              SizedBox(
+                                height: 15.h,
+                              ),
+                              ContinueButton(
+                                onPressed: () {},
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ))
+                    ),
+                    
+                  ],
+                ),
+              ),
             ],
           ),
         ),

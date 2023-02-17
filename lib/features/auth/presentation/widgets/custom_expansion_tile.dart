@@ -32,7 +32,20 @@ class CustomExpansionTile extends StatelessWidget {
             child: SingleChildScrollView(
               child: child,
             ),
+          ),
+          Padding(
+            padding:  EdgeInsets.only(left: 10.w,right: 10.w,bottom: 10.h),
+            child: RichText(text: TextSpan(
+              text: '',
+              children: [
+                TextSpan(text: 'By continuing, you agree to ',style: Theme.of(context).textTheme.headline3,),
+                TextSpan(text: ' Amazon\'s Conditions',style: Theme.of(context).textTheme.headline3!.copyWith(color: Colors.blue),),
+                TextSpan(text: ' of Use and',style: Theme.of(context).textTheme.headline3),
+                TextSpan(text: ' Privacy Notice',style: Theme.of(context).textTheme.headline3!.copyWith(color: Colors.blue),),
+              ]
+            )),
           )
+          
         ]);
   }
 }

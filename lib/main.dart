@@ -9,6 +9,7 @@ import 'package:flutter_amazon_app/features/auth/data/repository/create_account_
 import 'package:flutter_amazon_app/features/category/business_logic/cubit/category_cubit.dart';
 import 'package:flutter_amazon_app/features/category/data/repository/category_repository.dart';
 import 'package:flutter_amazon_app/features/home/business_logic/cubit/home_cubit.dart';
+import 'package:flutter_amazon_app/features/home/business_logic/cubit/user_auth_state_cubit.dart';
 import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_amazon_app/features/product/business_logic/cubit/product_cubit.dart';
 import 'package:flutter_amazon_app/features/product/data/repository/product_repository.dart';
@@ -45,7 +46,10 @@ class MyApp extends StatelessWidget {
           BlocProvider(create:(context)=> ProductCubit(ProductRepository(FirebaseFirestore.instance))..getAllProducts(),),
           BlocProvider(
             create: (context) => CreateAccountCubit(CreateAccountRepository(FirebaseAuth.instance, FirebaseFirestore.instance)),
-          )
+          ),
+           BlocProvider(
+            create: (context) => UserAuthStateCubit()..userAuthState()),
+          
         ],
         child: ScreenUtilInit(
             designSize: const Size(360, 690),

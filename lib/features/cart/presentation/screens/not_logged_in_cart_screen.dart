@@ -11,15 +11,9 @@ class NotLoggedInCartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
-      appBar: CustomAppBar(
-          appBarHeight: 65.h,
-          alignment: Alignment.bottomCenter,
-          child: const CustomSearchField()),
-      body: Container(
+    return  Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
-        height: 385.h,
+        height: 395.h,
         color: Theme.of(context).primaryColorLight,
         child: Center(
           child: Column(
@@ -64,7 +58,7 @@ class NotLoggedInCartScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      
     );
   }
 }

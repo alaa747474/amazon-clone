@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:flutter_amazon_app/features/home/business_logic/cubit/home_cubit.dart';
-import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 

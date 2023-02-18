@@ -54,12 +54,12 @@ static TextTheme textTheme() {
       color: Colors.black,
       fontWeight: FontWeight.normal,
       
-      fontSize:14.sp,
+      fontSize:16.sp,
     ),
     bodyText2: TextStyle(
-      color: Colors.black,
+      color: const Color.fromARGB(255,6,126,146),
       fontWeight: FontWeight.normal,
-      fontSize: 8.sp,
+      fontSize: 14.sp,
     ),
   );
 }

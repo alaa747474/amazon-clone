@@ -7,13 +7,16 @@ class CustomExpansionTile extends StatelessWidget {
       {super.key,
       this.onExpansionChanged,
       required this.title,
+      required this.initiallyExpanded,
       required this.child});
   final Function(bool)? onExpansionChanged;
   final String title;
   final Widget child;
+  final bool initiallyExpanded;
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
+        initiallyExpanded: initiallyExpanded,
         leading: const Icon(Icons.radio_button_off),
         collapsedIconColor: Theme.of(context).shadowColor,
         iconColor: Theme.of(context).highlightColor,

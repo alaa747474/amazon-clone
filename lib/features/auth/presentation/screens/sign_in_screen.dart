@@ -13,7 +13,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
   static const String routeName = '/sign_in_screen';
-
   @override
   State<SignInScreen> createState() => _SignInScreenState();
 }
@@ -24,6 +23,13 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
+  @override
+  void dispose() {
+    super.dispose();
+    passwordController.dispose();
+    emailController.dispose();
+    nameController.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,6 +84,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Column(
                   children: [
                     CustomExpansionTile(
+                      initiallyExpanded: false,
                       key: item1Key,
                       onExpansionChanged: (value) {
                         if (value == true) {
@@ -133,6 +140,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ),
                     CustomExpansionTile(
+                      initiallyExpanded: false,
                       key: item2Key,
                       onExpansionChanged: (value) {
                         if (value == true) {

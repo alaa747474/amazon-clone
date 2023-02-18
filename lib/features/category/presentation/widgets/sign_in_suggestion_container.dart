@@ -24,7 +24,7 @@ class SignInSuggestionContainer extends StatelessWidget {
             style: Theme.of(context).textTheme.headline2,
           ),
           CustomButton(
-            mqWidth: MediaQuery.of(context).size.width,
+            elevation: 1,
             text: 'Sign in securly',
             onPressed: () =>
                 Navigator.pushNamed(context, SignInScreen.routeName),

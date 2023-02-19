@@ -1,13 +1,13 @@
-import 'dart:convert';
 
 class Product {
   final String name;
+  final String id;
   final int price;
   final String image;
   final bool bestSeller;
   final String category;
 
-  Product(this.name, this.price, this.image, this.bestSeller, this.category);
+  Product(this.name, this.price, this.image, this.bestSeller, this.category,this.id);
 
   Map<String, dynamic> toJson() {
     return {
@@ -16,6 +16,7 @@ class Product {
       'image': image,
       'bestSeller': bestSeller,
       'category': category,
+      'id':id,
     };
   }
 
@@ -26,6 +27,7 @@ class Product {
       map['image'] ?? '',
       map['bestSeller'] ?? false,
       map['category'] ?? '',
+       map['id'],
     );
   }
 

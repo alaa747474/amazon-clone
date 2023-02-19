@@ -122,7 +122,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               SizedBox(
                                 height: 15.h,
                               ),
-                              ContinueButton(
+                              CustomSignInButton(
+                                text: 'continue',
                                 onPressed: () {
                                   context
                                       .read<CreateAccountCubit>()
@@ -153,6 +154,10 @@ class _SignInScreenState extends State<SignInScreen> {
                       child:
                           BlocBuilder<SignInCubit, SignInState>(
                         builder: (context, state) {
+                          
+                          if (state is CreateAccountLoading) {
+                            return const Center(child: LoadingIndicator(),);
+                          }
                           return Column(
                             children: [
                               Column(
@@ -177,7 +182,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                   SizedBox(
                                     height: 15.h,
                                   ),
-                                  ContinueButton(
+                                  CustomSignInButton(
+                                    text: 'continue',
                                     onPressed: () {},
                                   ),
                                 ],

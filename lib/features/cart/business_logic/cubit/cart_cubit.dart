@@ -12,15 +12,26 @@ class CartCubit extends Cubit<CartState> {
 
   addToCart({required Product product}){
     _cartRepository.addProductToCart(product: product).then((value) {
-      emit(ProductAddedToCart());
+     emit(ProductAddedToCart());
       getCartProducts();
     });
   }
   removeFromCart({required Product product}){
     _cartRepository.removeProductFromCart(product: product).then((value) {
       emit(ProductRemovedFromCart());
-     getCartProducts();
+       getCartProducts();
     });
+  }
+  Map cartProductQuantity(List<Product>products){
+    Map quantity={};
+    for (var product in products) {
+      if (!quantity.containsKey(product.id)) {
+        quantity[product.id]=1;
+      }else{
+        quantity[product.id]+=1;
+      }
+    }
+    return quantity;
   }
   getCartProducts(){
     _cartRepository.getCartProducts().then((value) {

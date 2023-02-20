@@ -7,7 +7,7 @@ class CartInitial extends CartState {}
 class ProductAddedToCart extends CartState {}
 class ProductRemovedFromCart extends CartState {}
 class CartProductsLoaded extends CartState {
-  final Cart cartProducts;
+  final Cart cart;
 
-  CartProductsLoaded(this.cartProducts);
+  CartProductsLoaded(this.cart);
 }

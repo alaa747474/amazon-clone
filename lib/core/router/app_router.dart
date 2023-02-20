@@ -9,6 +9,7 @@ import 'package:flutter_amazon_app/features/auth/data/repository/sign_in_reposit
 import 'package:flutter_amazon_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
+import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';
 import 'package:flutter_amazon_app/features/product/presentation/screens/products_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,6 +19,9 @@ class AppRouter {
       case ProductsScreen.routeName:
       final products= settings.arguments as List<Product>;
       return MaterialPageRoute(builder: (_)=>ProductsScreen(products: products,));
+      case ProductDetailsScreen.routeName:
+      final product= settings.arguments as Product;
+      return MaterialPageRoute(builder: (_)=>ProductDetailsScreen(product: product));
       case SignInScreen.routeName:
       return MaterialPageRoute(builder: (_)=>
       MultiBlocProvider(

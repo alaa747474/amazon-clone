@@ -1,13 +1,14 @@
 
 class Product {
   final String name;
-  final String id;
+   final String id;
+   String uid;
   final int price;
   final String image;
   final bool bestSeller;
   final String category;
 
-  Product(this.name, this.price, this.image, this.bestSeller, this.category,this.id);
+  Product(this.name, this.price, this.image, this.bestSeller, this.category,this.id,this.uid);
 
   Map<String, dynamic> toJson() {
     return {
@@ -17,6 +18,7 @@ class Product {
       'bestSeller': bestSeller,
       'category': category,
       'id':id,
+      'uid':uid
     };
   }
 
@@ -27,7 +29,8 @@ class Product {
       map['image'] ?? '',
       map['bestSeller'] ?? false,
       map['category'] ?? '',
-       map['id'],
+       map['id']??'',
+      map['uid']??'',
     );
   }
 

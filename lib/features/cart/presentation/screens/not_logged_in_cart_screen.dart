@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_button.dart';
-import 'package:flutter_amazon_app/core/widgets/custom_search_field.dart';
 import 'package:flutter_amazon_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';

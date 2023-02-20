@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/loading_indicator.dart';
 import 'package:flutter_amazon_app/features/product/business_logic/cubit/product_cubit.dart';
+import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';
 import 'package:flutter_amazon_app/features/product/presentation/screens/products_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,7 +48,10 @@ class DiscountContainer extends StatelessWidget {
                         crossAxisSpacing: 5.h),
                     itemCount: 4,
                     itemBuilder: (BuildContext context, int index) {
-                      return Image.network(discountProducts[index].image);
+                      //TODO: Product Details Screen
+                      return InkWell(
+                        onTap: ()=>Navigator.pushNamed(context, ProductDetailsScreen.routeName,arguments: discountProducts[index]),
+                        child: Image.network(discountProducts[index].image));
                     },
                   ),
                 ),

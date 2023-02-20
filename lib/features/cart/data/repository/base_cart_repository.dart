@@ -1,4 +1,4 @@
-import 'package:flutter_amazon_app/features/cart/data/model/cart.dart';
+
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
 
 abstract class BaseCartRepository{

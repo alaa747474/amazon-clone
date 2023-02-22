@@ -12,9 +12,9 @@ class SuggestionProductsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20.r),
+      padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 20.w),
       color: Colors.white,
-      height: 280.h,
+      height: 310.h,
       width: double.infinity,
       child: BlocBuilder<ProductCubit, ProductState>(
         builder: (context, state) {
@@ -31,6 +31,7 @@ class SuggestionProductsContainer extends StatelessWidget {
                   'You might also like',
                   style: Theme.of(context).textTheme.headline2,
                 ),
+                SizedBox(height: 10.h,),
                 Expanded(
                   child: ListView.builder(
                     itemCount: suggestionList.length,

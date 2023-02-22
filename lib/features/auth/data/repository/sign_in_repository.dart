@@ -4,11 +4,13 @@ import 'package:flutter_amazon_app/features/auth/data/repository/base_sign_in_re
 
 class SignInRepository extends BaseSignInRepository {
   final FirebaseAuth _firebaseAuth;
-
   SignInRepository(this._firebaseAuth);
   @override
   Future signIn(UserModel userModel) async {
     await _firebaseAuth.signInWithEmailAndPassword(
         email: userModel.email, password: userModel.password);
+  }
+  signOut(){
+    _firebaseAuth.signOut();
   }
 }

@@ -23,6 +23,8 @@ class AppRouter {
       final product= settings.arguments as Product;
       return MaterialPageRoute(builder: (_)=>ProductDetailsScreen(product: product));
       case SignInScreen.routeName:
+      final signInArgs=settings.arguments as SignInScreen;
+      
       return MaterialPageRoute(builder: (_)=>
       MultiBlocProvider(
         providers: [
@@ -33,7 +35,7 @@ class AppRouter {
             create: (context) => SignInCubit(SignInRepository(FirebaseAuth.instance,)),
           ),
         ],
-        child:const SignInScreen() ,
+        child: SignInScreen(signInExpanded: signInArgs.signInExpanded,createAccountExpanded: signInArgs.createAccountExpanded,) ,
       )  );   
     }
     return MaterialPageRoute(builder: (_)=>const HomeScreen());

@@ -20,4 +20,8 @@ class SignInCubit extends Cubit<SignInState> {
       showCustomSnackBar(context: context, content: e.message.toString());
     }
   }
+  signOut(){
+    _signInRepository.signOut();
+     emit(signOut());
+  }
 }

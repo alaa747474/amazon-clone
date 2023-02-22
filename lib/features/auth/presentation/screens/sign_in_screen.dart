@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_amazon_app/core/widgets/loading_indicator.dart';
@@ -11,8 +12,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+  const SignInScreen(
+      {super.key,
+      this.signInExpanded = false,
+      this.createAccountExpanded = false});
   static const String routeName = '/sign_in_screen';
+  final bool signInExpanded;
+  final bool createAccountExpanded;
   @override
   State<SignInScreen> createState() => _SignInScreenState();
 }
@@ -30,6 +36,7 @@ class _SignInScreenState extends State<SignInScreen> {
     emailController.dispose();
     nameController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +91,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Column(
                   children: [
                     CustomExpansionTile(
-                      initiallyExpanded: false,
+                      initiallyExpanded: widget.createAccountExpanded,
                       key: item1Key,
                       onExpansionChanged: (value) {
                         if (value == true) {
@@ -94,10 +101,13 @@ class _SignInScreenState extends State<SignInScreen> {
                         }
                       },
                       title: 'Create account',
-                      child: BlocBuilder<CreateAccountCubit, CreateAccountState>(
+                      child:
+                          BlocBuilder<CreateAccountCubit, CreateAccountState>(
                         builder: (context, state) {
                           if (state is CreateAccountLoading) {
-                            return const Center(child: LoadingIndicator(),);
+                            return const Center(
+                              child: LoadingIndicator(),
+                            );
                           }
                           return Column(
                             children: [
@@ -141,7 +151,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ),
                     CustomExpansionTile(
-                      initiallyExpanded: false,
+                      initiallyExpanded: widget.signInExpanded,
                       key: item2Key,
                       onExpansionChanged: (value) {
                         if (value == true) {
@@ -151,12 +161,12 @@ class _SignInScreenState extends State<SignInScreen> {
                         }
                       },
                       title: 'Sign in',
-                      child:
-                          BlocBuilder<SignInCubit, SignInState>(
+                      child: BlocBuilder<SignInCubit, SignInState>(
                         builder: (context, state) {
-                          
                           if (state is CreateAccountLoading) {
-                            return const Center(child: LoadingIndicator(),);
+                            return const Center(
+                              child: LoadingIndicator(),
+                            );
                           }
                           return Column(
                             children: [
@@ -184,7 +194,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                   ),
                                   CustomSignInButton(
                                     text: 'continue',
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      context.read<SignInCubit>().signIn(
+                                          context: context,
+                                          userModel: UserModel(
+                                              null,
+                                              emailController.text,
+                                              passwordController.text));
+                                    },
                                   ),
                                 ],
                               ),

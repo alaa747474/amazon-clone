@@ -27,7 +27,7 @@ class SignInSuggestionContainer extends StatelessWidget {
             elevation: 1,
             text: 'Sign in securly',
             onPressed: () =>
-                Navigator.pushNamed(context, SignInScreen.routeName),
+                Navigator.pushNamed(context, SignInScreen.routeName,arguments: const SignInScreen(signInExpanded: true,createAccountExpanded: false,)),
           ),
           Text(
             'create an account',

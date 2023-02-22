@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
+import 'package:flutter_amazon_app/features/cart/presentation/screens/logged_in_cart_screen.dart';
+import 'package:flutter_amazon_app/features/home/business_logic/cubit/user_auth_state_cubit.dart';
+import 'package:flutter_amazon_app/features/profile/presentation/screens/logged_in_profile_screen.dart';
 import 'package:flutter_amazon_app/features/profile/presentation/screens/not_logged_in_profile_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -27,7 +31,14 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: NotLoggedInProfileScreen()
+      body: BlocBuilder<UserAuthStateCubit, UserAuthStateState>(
+      builder: (context, state) {
+        if (state is UserLoggedInState) {
+          return state.user==null? const NotLoggedInProfileScreen():const LoggedInProfileScreen();
+        }
+        return const NotLoggedInProfileScreen();
+      },
+    ),
     );
   }
 }

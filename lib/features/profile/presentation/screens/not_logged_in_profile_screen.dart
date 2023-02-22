@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter_amazon_app/features/auth/presentation/widgets/continue_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -46,12 +47,26 @@ class NotLoggedInProfileScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
           child: Column(
             children: [
-              CustomSignInButton(onPressed: () {}, text: 'Sign in'),
+              CustomSignInButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, SignInScreen.routeName,
+                        arguments: const SignInScreen(
+                          signInExpanded: true,
+                          createAccountExpanded: false,
+                        ));
+                  },
+                  text: 'Sign in'),
               SizedBox(
                 height: 10.h,
               ),
               CustomSignInButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, SignInScreen.routeName,
+                      arguments: const SignInScreen(
+                        createAccountExpanded: true,
+                        signInExpanded: false,
+                      ));
+                },
                 text: 'Create account',
                 color: Theme.of(context).hoverColor,
               ),

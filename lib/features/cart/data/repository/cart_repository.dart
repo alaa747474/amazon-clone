@@ -47,4 +47,20 @@ class CartRepository extends BaseCartRepository {
 
     return collection.docs.map((e) => Product.fromJson(e.data())).toList();
   }
+  
+  @override
+  Future<void> deleteAllProductQuantities({required Product product})async {
+    var query = _firebaseFirestore
+        .collection(usersCollection)
+        .doc(_firebaseAuth.currentUser!.uid)
+        .collection(cartCollection).where('id',isEqualTo: product.id);
+    await query.get().then((value) {
+      for (var element in value.docs) {
+        _firebaseFirestore
+            .collection(usersCollection)
+            .doc(_firebaseAuth.currentUser!.uid)
+            .collection(cartCollection).doc(element.id).delete();
+      }
+    });
+  }
 }

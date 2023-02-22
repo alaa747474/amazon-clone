@@ -41,7 +41,7 @@ class CartQuantityButton extends StatelessWidget {
               ),
             ),
           ),
-          Text(quantity.toString()),
+          Text(quantity.toString(),style: Theme.of(context).textTheme.bodyText1),
           ClipRRect(
             borderRadius:const BorderRadius.only(
               topRight: Radius.circular(10),

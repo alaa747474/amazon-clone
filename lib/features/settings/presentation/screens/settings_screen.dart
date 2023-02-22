@@ -1,13 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_search_field.dart';
 import 'package:flutter_amazon_app/features/auth/business_logic/sign_in_cubit/sign_in_cubit.dart';
-import 'package:flutter_amazon_app/features/auth/data/repository/sign_in_repository.dart';
 import 'package:flutter_amazon_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter_amazon_app/features/home/business_logic/cubit/home_cubit.dart';
 import 'package:flutter_amazon_app/features/home/business_logic/cubit/user_auth_state_cubit.dart';
-import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_amazon_app/features/settings/presentation/widgets/custom_settings_container.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,8 +48,7 @@ class SettingScreen extends StatelessWidget {
                         CustomSettingsContainer(
                           text: 'Sign in',
                           onPressed: () {
-                            Navigator.pushNamed(
-                                context, SignInScreen.routeName,
+                            Navigator.pushNamed(context, SignInScreen.routeName,
                                 arguments: const SignInScreen(
                                   signInExpanded: true,
                                   createAccountExpanded: false,
@@ -68,11 +64,18 @@ class SettingScreen extends StatelessWidget {
                           text: 'Customer Service',
                           onPressed: () {},
                         ),
-                        CustomSettingsContainer(
-                          text: 'Sign out',
-                          onPressed: () {
-                            SignInRepository(FirebaseAuth.instance).signOut();
+                        BlocListener<SignInCubit, SignInState>(
+                          listener: (context, state) {
+                            if (state is SignOutDone) {
+                              context.read<HomeCubit>().changeIndex(0);
+                            }
                           },
+                          child: CustomSettingsContainer(
+                            text: 'Sign out',
+                            onPressed: () {
+                              context.read<SignInCubit>().signOut();
+                            },
+                          ),
                         ),
                       ],
                     );

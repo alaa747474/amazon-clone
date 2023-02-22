@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
-
+  static const routeName='/category_screen'; 
   @override
   Widget build(BuildContext context) {
     final mediaQueryHeight = MediaQuery.of(context).size.height;

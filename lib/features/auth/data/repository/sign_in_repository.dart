@@ -10,7 +10,9 @@ class SignInRepository extends BaseSignInRepository {
     await _firebaseAuth.signInWithEmailAndPassword(
         email: userModel.email, password: userModel.password);
   }
-  signOut(){
-    _firebaseAuth.signOut();
+
+  @override
+  signOut()async{
+   await _firebaseAuth.signOut();
   }
 }

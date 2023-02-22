@@ -21,7 +21,14 @@ class SignInCubit extends Cubit<SignInState> {
     }
   }
   signOut(){
-    _signInRepository.signOut();
-     emit(signOut());
+   try {
+      emit(SignOutLoading());
+     _signInRepository.signOut().then((value) {
+      emit(SignOutDone());
+   });
+   } catch (e) {
+     debugPrint(e.toString());
+   }
+  
   }
 }

@@ -7,6 +7,7 @@ import 'package:flutter_amazon_app/features/auth/business_logic/sign_in_cubit/si
 import 'package:flutter_amazon_app/features/auth/data/repository/create_account_repository.dart';
 import 'package:flutter_amazon_app/features/auth/data/repository/sign_in_repository.dart';
 import 'package:flutter_amazon_app/features/auth/presentation/screens/sign_in_screen.dart';
+import 'package:flutter_amazon_app/features/category/presentation/screens/categories_screen.dart';
 import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
 import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';
@@ -22,6 +23,9 @@ class AppRouter {
       case ProductDetailsScreen.routeName:
       final product= settings.arguments as Product;
       return MaterialPageRoute(builder: (_)=>ProductDetailsScreen(product: product));
+       case CategoryScreen.routeName:
+      
+      return MaterialPageRoute(builder: (_)=>CategoryScreen());
       case SignInScreen.routeName:
       final signInArgs=settings.arguments as SignInScreen;
       

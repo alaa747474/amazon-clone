@@ -15,7 +15,6 @@ class HomeScreen extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         return Scaffold(
-          
           bottomNavigationBar: const CustomBottomNavBar(),
           body: homeCubit.screens[homeCubit.selectedIndex],
         );

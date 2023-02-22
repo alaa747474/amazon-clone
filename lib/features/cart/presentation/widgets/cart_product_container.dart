@@ -51,6 +51,7 @@ class CartProductContainer extends StatelessWidget {
                 )
               ],
             ),
+            SizedBox(height: 10.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

@@ -11,13 +11,15 @@ part 'create_account_state.dart';
 class CreateAccountCubit extends Cubit<CreateAccountState> {
   CreateAccountCubit(this._createAccountRepository) : super(CreateAccountInitial());
   final CreateAccountRepository _createAccountRepository;
-  createAccount({required UserModel userModel,required BuildContext context}){
+  createAccount({required UserModel userModel,required BuildContext context})async{
     try {
       emit(CreateAccountLoading());
-      _createAccountRepository.createAccount(userModel: userModel);
+      await _createAccountRepository.createAccount(userModel: userModel);
       emit(CreateAccountDone());
     } on FirebaseAuthException catch(e) {
+
       showCustomSnackBar(context: context, content: e.message.toString());
+      emit(CreateAccountInitial());
     }
   }
 }

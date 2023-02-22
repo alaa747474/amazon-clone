@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({Key? key, required this.title, this.validator, required this.textEditingController}) : super(key: key);
+  const CustomTextField({Key? key, required this.title, this.validator, required this.textEditingController,  }) : super(key: key);
   final String title;
   final String? Function(String?)? validator;
  final TextEditingController textEditingController;
+
   @override
   Widget build(BuildContext context) {
     return Column(

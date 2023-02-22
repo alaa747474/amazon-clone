@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_search_field.dart';
+import 'package:flutter_amazon_app/core/widgets/loading_indicator.dart';
 import 'package:flutter_amazon_app/features/auth/business_logic/sign_in_cubit/sign_in_cubit.dart';
 import 'package:flutter_amazon_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter_amazon_app/features/home/business_logic/cubit/home_cubit.dart';
@@ -64,18 +65,25 @@ class SettingScreen extends StatelessWidget {
                           text: 'Customer Service',
                           onPressed: () {},
                         ),
-                        BlocListener<SignInCubit, SignInState>(
+                        BlocConsumer<SignInCubit, SignInState>(
+                          builder: (context, state) {
+                            if(state is SignOutLoading){
+                              return const LoadingIndicator();
+                            }
+                            return CustomSettingsContainer(
+                            text: 'Sign out',
+                            onPressed: () {
+                              context.read<SignInCubit>().signOut();
+                            },
+                          );
+                          },
                           listener: (context, state) {
                             if (state is SignOutDone) {
                               context.read<HomeCubit>().changeIndex(0);
                             }
                           },
-                          child: CustomSettingsContainer(
-                            text: 'Sign out',
-                            onPressed: () {
-                              context.read<SignInCubit>().signOut();
-                            },
-                          ),
+                          
+                          
                         ),
                       ],
                     );

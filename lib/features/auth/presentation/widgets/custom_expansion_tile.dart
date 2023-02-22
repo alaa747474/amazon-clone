@@ -5,11 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomExpansionTile extends StatelessWidget {
   const CustomExpansionTile(
       {super.key,
-      this.onExpansionChanged,
+
       required this.title,
       required this.initiallyExpanded,
       required this.child});
-  final Function(bool)? onExpansionChanged;
+
   final String title;
   final Widget child;
   final bool initiallyExpanded;
@@ -22,7 +22,7 @@ class CustomExpansionTile extends StatelessWidget {
         iconColor: Theme.of(context).highlightColor,
         collapsedBackgroundColor: Theme.of(context).hoverColor,
         trailing: const SizedBox(),
-        onExpansionChanged: onExpansionChanged,
+      
         key: key,
         title: Text(
           title,

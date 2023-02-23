@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/router/app_router.dart';
+import 'package:flutter_amazon_app/core/utils/service_locator.dart';
 import 'package:flutter_amazon_app/core/utils/theme.dart';
 import 'package:flutter_amazon_app/features/auth/business_logic/create_account_cubit/create_account_cubit.dart';
 import 'package:flutter_amazon_app/features/auth/business_logic/sign_in_cubit/sign_in_cubit.dart';
@@ -29,6 +30,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  serviceLocatorSetUp();
   runApp(const MyApp());
 }
 

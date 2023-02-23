@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/features/product/business_logic/cubit/product_cubit.dart';
+import 'package:flutter_amazon_app/features/category/presentation/screens/best_seller_category_screen.dart';
+import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -43,40 +45,46 @@ class BestSellerProducstContainer extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       return LayoutBuilder(builder:
                           (BuildContext context, BoxConstraints constraints) {
-                        return SizedBox(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.network(
-                                bestSellerProducts[index].image,
-                                height: 115.h,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                '\$${bestSellerProducts[index].price}',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline4
-                              ),
-                              Text(
-                                bestSellerProducts[index].name,
-                                overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context).textTheme.headline4,
-                              ),
-                                ],
-                              )
-                            ],
+                        return InkWell(
+                          onTap: ()=>Navigator.pushNamed(context, ProductDetailsScreen.routeName,arguments: bestSellerProducts[index]),
+                          child: SizedBox(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.network(
+                                  bestSellerProducts[index].image,
+                                  height: 115.h,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                  '\$${bestSellerProducts[index].price}',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline4
+                                ),
+                                Text(
+                                  bestSellerProducts[index].name,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context).textTheme.headline4,
+                                ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         );
                       });
                     },
                   ),
                 ),
-                Text(
-                  'Sea all daels',
-                  style: Theme.of(context).textTheme.headline5,
+                InkWell(
+                  onTap: ()=>Navigator.pushNamed(context, BestSellerCategoryScreen.routeName),
+                  child: Text(
+                    'Sea all daels',
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
                 )
               ],
             );

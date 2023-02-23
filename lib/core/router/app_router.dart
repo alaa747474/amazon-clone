@@ -10,6 +10,7 @@ import 'package:flutter_amazon_app/features/auth/presentation/screens/sign_in_sc
 import 'package:flutter_amazon_app/features/category/presentation/screens/categories_screen.dart';
 import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
+import 'package:flutter_amazon_app/features/category/presentation/screens/best_seller_category_screen.dart';
 import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';
 import 'package:flutter_amazon_app/features/product/presentation/screens/products_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,8 +25,9 @@ class AppRouter {
       final product= settings.arguments as Product;
       return MaterialPageRoute(builder: (_)=>ProductDetailsScreen(product: product));
        case CategoryScreen.routeName:
-      
-      return MaterialPageRoute(builder: (_)=>CategoryScreen());
+      return MaterialPageRoute(builder: (_)=>const CategoryScreen());
+      case BestSellerCategoryScreen.routeName:
+      return MaterialPageRoute(builder: (_)=>const BestSellerCategoryScreen());
       case SignInScreen.routeName:
       final signInArgs=settings.arguments as SignInScreen;
       

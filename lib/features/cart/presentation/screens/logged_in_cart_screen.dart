@@ -18,19 +18,31 @@ class LoggedInCartScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 10.h,),
-              Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 15.w,),
-                child: Text('Subtotal \$${state.cart.total}',style: Theme.of(context).textTheme.headline3,),
+              SizedBox(
+                height: 10.h,
               ),
-              
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 5.h),
-                child: CustomButton(text: 'Proceed to checkout  (${state.cart.cartProducts.length} items)', onPressed: (){}),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15.w,
+                ),
+                child: Text(
+                  'Subtotal \$${state.cart.total}',
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
+                child: CustomButton(
+                    text:
+                        'Proceed to checkout  (${state.cart.cartProducts.length} items)',
+                    onPressed: () {}),
               ),
               Expanded(
                 child: ListView.builder(
-                    itemCount: context.read<CartCubit>().cartProductQuantity(state.cart.cartProducts).length,
+                    itemCount: context
+                        .read<CartCubit>()
+                        .cartProductQuantity(state.cart.cartProducts)
+                        .length,
                     itemBuilder: ((context, index) {
                       final cart = state.cart.cartProducts;
                       final x =

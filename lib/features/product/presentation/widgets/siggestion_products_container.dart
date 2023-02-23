@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_amazon_app/features/product/business_logic/cubit/product_cubit.dart';
+import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,9 +13,9 @@ class SuggestionProductsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 20.w),
+      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
       color: Colors.white,
-      height: 310.h,
+      height: 280.h,
       width: double.infinity,
       child: BlocBuilder<ProductCubit, ProductState>(
         builder: (context, state) {
@@ -31,40 +32,50 @@ class SuggestionProductsContainer extends StatelessWidget {
                   'You might also like',
                   style: Theme.of(context).textTheme.headline2,
                 ),
-                SizedBox(height: 10.h,),
+                SizedBox(
+                  height: 10.h,
+                ),
                 Expanded(
                   child: ListView.builder(
                     itemCount: suggestionList.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return SizedBox(
-                        width: 150.w,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 5.w),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Center(
-                                  child: Image.network(
-                                suggestionList[index].image,
-                                width: 150.w,
-                                height: 150.h,
-                                fit: BoxFit.scaleDown,
-                              )),
-                              Text(
-                                suggestionList[index].name,
-                                style: Theme.of(context).textTheme.headline5,
-                                softWrap: true,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                              ),
-                              Text('\$${suggestionList[index].price}',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline4!
-                                      .copyWith(color: Colors.red[700]))
-                            ],
+                      return InkWell(
+                        onTap: ()=>Navigator.pushNamed(context, ProductDetailsScreen.routeName,arguments: suggestionList[index]),
+                        child: SizedBox(
+                          width: 150.w,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 5.w),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  children: [
+                                    Center(
+                                        child: Image.network(
+                                      suggestionList[index].image,
+                                      width: 150.w,
+                                      height: 150.h,
+                                      fit: BoxFit.scaleDown,
+                                    )),
+                                    Text(
+                                      suggestionList[index].name,
+                                      style:
+                                          Theme.of(context).textTheme.headline5,
+                                      softWrap: true,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 3,
+                                    ),
+                                  ],
+                                ),
+                                Text('\$${suggestionList[index].price}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline4!
+                                        .copyWith(color: Colors.red[700]))
+                              ],
+                            ),
                           ),
                         ),
                       );

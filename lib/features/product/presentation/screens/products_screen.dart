@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_search_field.dart';
-import 'package:flutter_amazon_app/features/cart/business_logic/cubit/cart_cubit.dart';
+
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
+import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';
 import 'package:flutter_amazon_app/features/product/presentation/widgets/product_container.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductsScreen extends StatelessWidget {
@@ -44,10 +45,13 @@ class ProductsScreen extends StatelessWidget {
             child: ListView.builder(
                 itemCount: products.length,
                 itemBuilder: (context, index) {
-                  return ProductContainer(
-                    name: products[index].name,
-                    price: products[index].price.toString(),
-                    image: products[index].image,
+                  return InkWell(
+                    onTap: ()=>Navigator.pushNamed(context, ProductDetailsScreen.routeName,arguments: products[index]),
+                    child: ProductContainer(
+                      name: products[index].name,
+                      price: products[index].price.toString(),
+                      image: products[index].image,
+                    ),
                   );
                 }),
           ),

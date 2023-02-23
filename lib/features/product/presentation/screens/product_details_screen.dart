@@ -34,6 +34,7 @@ class ProductDetailsScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
+        physics: const BouncingScrollPhysics(),
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 15.w),
@@ -130,7 +131,10 @@ class ProductDetailsScreen extends StatelessWidget {
           SuggestionProductsContainer(
             category: product.category,
             currentProductId: product.id,
-          )
+          ),
+          SizedBox(
+            height: 5.h,
+          ),
         ],
       ),
     );

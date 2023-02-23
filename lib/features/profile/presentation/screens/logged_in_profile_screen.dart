@@ -71,7 +71,8 @@ class LoggedInProfileScreen extends StatelessWidget {
               ],
             ),
           ),
-          KeepShoppingForContainer()
+          SizedBox(height: 10.h,),
+          const KeepShoppingForContainer()
         ],
       ),
     );

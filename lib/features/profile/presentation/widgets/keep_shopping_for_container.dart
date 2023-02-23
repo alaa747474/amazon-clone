@@ -14,48 +14,50 @@ class KeepShoppingForContainer extends StatelessWidget {
     return BlocBuilder<ProductCubit, ProductState>(
       builder: (context, state) {
         return Container(
-          height: 320.h,
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
+          height: 350.h,
           color: Theme.of(context).primaryColorLight,
-          child: GridView.builder(
-            gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              mainAxisExtent: 120.r,
-              crossAxisSpacing: 25.r,
-              mainAxisSpacing: 25.r
-            ),
-            itemCount: 9,
-            itemBuilder: (BuildContext context, int index) {
-              if (state is Productloading) {
-                return const LoadingIndicator();
-              }
-               if (state is ProductLoaded) {
-                return Container(
-                  
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColorLight,
-                    borderRadius: BorderRadius.circular(5.r),
-                    boxShadow: [BoxShadow(
-                      spreadRadius: 0.1,
-                      offset: const Offset(-1,-1),
-                      
-                      color: Theme.of(context).shadowColor.withOpacity(0.2)
-                    ),
-                    BoxShadow(
-                      spreadRadius: 0.1,
-                      offset: const Offset(1,1),
-                      
-                      color: Theme.of(context).shadowColor.withOpacity(0.2)
-                    )
-                    ]
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Keep shopping for',style: Theme.of(context).textTheme.headline3,),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisExtent: 120.r,
+                    crossAxisSpacing: 15.r,
+                    mainAxisSpacing: 15.r
                   ),
-                
-                  child: Center(
-                    child: Image.network(state.products[index].image),
-                  ),
-                 );
-               }
-               return ErrorWidget('Something went wrong');
-            },
+                  itemCount: 9,
+                  itemBuilder: (BuildContext context, int index) {
+                    if (state is Productloading) {
+                      return const LoadingIndicator();
+                    }
+                     if (state is ProductLoaded) {
+                      return Container(
+                        
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColorLight,
+                          borderRadius: BorderRadius.circular(5.r),
+                          boxShadow: [BoxShadow(
+                            spreadRadius: 1,
+                            color: Theme.of(context).hintColor
+                          ),
+                          
+                          ]
+                        ),
+                      
+                        child: Center(
+                          child: Image.network(state.products[index].image),
+                        ),
+                       );
+                     }
+                     return ErrorWidget('Something went wrong');
+                  },
+                ),
+              ),
+            ],
           ),
         );
       },

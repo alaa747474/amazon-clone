@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_amazon_app/core/widgets/custom_button.dart';
 import 'package:flutter_amazon_app/core/widgets/loading_indicator.dart';
 import 'package:flutter_amazon_app/features/cart/business_logic/cubit/cart_cubit.dart';
 import 'package:flutter_amazon_app/features/cart/presentation/widgets/cart_product_container.dart';
+import 'package:flutter_amazon_app/features/order/presentation/screens/delivery_information_screen.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,7 +38,13 @@ class LoggedInCartScreen extends StatelessWidget {
                 child: CustomButton(
                     text:
                         'Proceed to checkout  (${state.cart.cartProducts.length} items)',
-                    onPressed: () {}),
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, DeliveryInformationScreen.routeName,
+                          arguments: DeliveryInformationScreen(
+                              products: state.cart.cartProducts,
+                              total: state.cart.total.toString()));
+                    }),
               ),
               Expanded(
                 child: ListView.builder(
@@ -45,12 +54,12 @@ class LoggedInCartScreen extends StatelessWidget {
                         .length,
                     itemBuilder: ((context, index) {
                       final cart = state.cart.cartProducts;
-                      final x =
+                      final productsMap =
                           context.read<CartCubit>().cartProductQuantity(cart);
                       return CartProductContainer(
-                        cartProduct: cart.firstWhere(
-                            (element) => element.id == x.keys.elementAt(index)),
-                        quantity: x.values.elementAt(index),
+                        cartProduct: cart.firstWhere((element) =>
+                            element.id == productsMap.keys.elementAt(index)),
+                        quantity: productsMap.values.elementAt(index),
                       );
                     })),
               ),

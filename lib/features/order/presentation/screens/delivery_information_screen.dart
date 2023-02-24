@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_button.dart';
+import 'package:flutter_amazon_app/core/widgets/loading_indicator.dart';
 import 'package:flutter_amazon_app/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:flutter_amazon_app/features/cart/business_logic/cubit/cart_cubit.dart';
+import 'package:flutter_amazon_app/features/home/business_logic/cubit/home_cubit.dart';
+import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_amazon_app/features/order/business_logic/cubit/order_cubit.dart';
 import 'package:flutter_amazon_app/features/order/data/model/order_model.dart';
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
@@ -31,6 +36,7 @@ class _DeliveryInformationScreenState extends State<DeliveryInformationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).primaryColorLight,
       appBar: CustomAppBar(
         alignment: Alignment.bottomCenter,
         appBarHeight: 45.h,
@@ -53,25 +59,39 @@ class _DeliveryInformationScreenState extends State<DeliveryInformationScreen> {
         padding: EdgeInsets.all(15.r),
         children: [
           CustomTextField(
-              title: 'Full name ',
-              textEditingController: TextEditingController()),
+            
+              title: 'Full Name ',
+              textEditingController: fullNameController),
           CustomTextField(
-              title: 'Full name ',
-              textEditingController: TextEditingController()),
+              title: 'Address',
+              textEditingController: addressController),
           CustomTextField(
-              title: 'Full name ',
-              textEditingController: TextEditingController()),
+              title: 'Town/City',
+              textEditingController: cityController),
           CustomTextField(
-              title: 'Full name ',
-              textEditingController: TextEditingController()),
+              title: 'Country',
+              textEditingController: countryController),
           CustomTextField(
-              title: 'Full name ',
-              textEditingController: TextEditingController()),
-          BlocBuilder<OrderCubit, OrderState>(
+            phoneNumberType: true,
+              title: 'Phone Number',
+              textEditingController:phoneNumberController),
+          BlocConsumer<OrderCubit, OrderState>(
+            listener:(context, state) {
+              if (state is OrderConfirmationDone) {
+               
+                context.read<HomeCubit>().changeIndex(0);
+                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                 
+              }
+            },
             builder: (context, state) {
+              if (state is OrderConfirmationLoading) {
+                return const LoadingIndicator();
+              }
               return CustomButton(text: 'Use this address', onPressed: () {
                 final order =OrderModel(fullNameController.text, phoneNumberController.text, cityController.text, addressController.text, widget.total, widget.products, countryController.text);
                 context.read<OrderCubit>().orderConfirmation(orderModel:order);
+               
               });
             },
           )

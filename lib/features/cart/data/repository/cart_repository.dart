@@ -5,14 +5,13 @@ import 'package:flutter_amazon_app/features/cart/data/repository/base_cart_repos
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
 import 'package:uuid/uuid.dart';
 
-
 class CartRepository extends BaseCartRepository {
   final FirebaseFirestore _firebaseFirestore;
   final FirebaseAuth _firebaseAuth;
   CartRepository(this._firebaseFirestore, this._firebaseAuth);
   @override
   Future<void> addProductToCart({required Product product}) async {
-    product.uid=const Uuid().v1();
+    product.uid = const Uuid().v1();
     await _firebaseFirestore
         .collection(usersCollection)
         .doc(_firebaseAuth.currentUser!.uid)
@@ -26,13 +25,16 @@ class CartRepository extends BaseCartRepository {
     var query = _firebaseFirestore
         .collection(usersCollection)
         .doc(_firebaseAuth.currentUser!.uid)
-        .collection(cartCollection).where('uid',isEqualTo: product.uid);
+        .collection(cartCollection)
+        .where('uid', isEqualTo: product.uid);
     await query.get().then((value) {
       for (var element in value.docs) {
         _firebaseFirestore
             .collection(usersCollection)
             .doc(_firebaseAuth.currentUser!.uid)
-            .collection(cartCollection).doc(element.id).delete();
+            .collection(cartCollection)
+            .doc(element.id)
+            .delete();
       }
     });
   }
@@ -47,20 +49,33 @@ class CartRepository extends BaseCartRepository {
 
     return collection.docs.map((e) => Product.fromJson(e.data())).toList();
   }
-  
+
   @override
-  Future<void> deleteAllProductQuantities({required Product product})async {
+  Future<void> deleteAllProductQuantities({required Product product}) async {
     var query = _firebaseFirestore
         .collection(usersCollection)
         .doc(_firebaseAuth.currentUser!.uid)
-        .collection(cartCollection).where('id',isEqualTo: product.id);
+        .collection(cartCollection)
+        .where('id', isEqualTo: product.id);
     await query.get().then((value) {
       for (var element in value.docs) {
         _firebaseFirestore
             .collection(usersCollection)
             .doc(_firebaseAuth.currentUser!.uid)
-            .collection(cartCollection).doc(element.id).delete();
+            .collection(cartCollection)
+            .doc(element.id)
+            .delete();
       }
     });
+  }
+
+  @override
+  Future<void> deleteCart() async {
+    await _firebaseFirestore
+        .collection(usersCollection)
+        .doc(_firebaseAuth.currentUser!.uid)
+        .collection(cartCollection)
+        .doc()
+        .delete();
   }
 }

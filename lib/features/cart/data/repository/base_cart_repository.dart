@@ -6,4 +6,5 @@ abstract class BaseCartRepository{
   Future<void>removeProductFromCart({required Product product});
   Future<void>deleteAllProductQuantities({required Product product});
   Future<List<Product>> getCartProducts();
+  Future<void>deleteCart();
 }

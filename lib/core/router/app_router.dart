@@ -11,6 +11,7 @@ import 'package:flutter_amazon_app/features/category/presentation/screens/catego
 import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
 import 'package:flutter_amazon_app/features/category/presentation/screens/best_seller_category_screen.dart';
+
 import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';
 import 'package:flutter_amazon_app/features/product/presentation/screens/products_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

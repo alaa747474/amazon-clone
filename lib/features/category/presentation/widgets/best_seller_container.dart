@@ -48,6 +48,7 @@ class BestSellerProducstContainer extends StatelessWidget {
                         return InkWell(
                           onTap: ()=>Navigator.pushNamed(context, ProductDetailsScreen.routeName,arguments: bestSellerProducts[index]),
                           child: SizedBox(
+                            
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_amazon_app/core/widgets/loading_indicator.dart';
 import 'package:flutter_amazon_app/features/product/business_logic/cubit/product_cubit.dart';
 import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';

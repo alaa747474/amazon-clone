@@ -71,11 +71,14 @@ class CartRepository extends BaseCartRepository {
 
   @override
   Future<void> deleteCart() async {
-    await _firebaseFirestore
+  var query = _firebaseFirestore
         .collection(usersCollection)
         .doc(_firebaseAuth.currentUser!.uid)
-        .collection(cartCollection)
-        .doc()
-        .delete();
-  }
+        .collection(cartCollection);
+    await query.get().then((value) {
+      for (var element in value.docs) {
+        element.reference.delete();
+      }
+    });
+}
 }

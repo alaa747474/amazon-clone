@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/features/cart/business_logic/cubit/cart_cubit.dart';
-import 'package:flutter_amazon_app/features/cart/data/model/cart.dart';
+
 import 'package:flutter_amazon_app/features/cart/presentation/widgets/cart_delete_button.dart';
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -46,8 +46,10 @@ class CartCubit extends Cubit<CartState> {
       emit(CartProductsLoaded(Cart(value)));
     });
   }
-  deleteCart(){
-    _cartRepository.deleteCart();
-    emit(getCartProducts());
+  deleteCart()async{
+   await _cartRepository.deleteCart().then((value) {
+      getCartProducts();
+    });
+
   }
 }

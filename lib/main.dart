@@ -5,10 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/router/app_router.dart';
 import 'package:flutter_amazon_app/core/utils/service_locator.dart';
 import 'package:flutter_amazon_app/core/utils/theme.dart';
-import 'package:flutter_amazon_app/features/auth/business_logic/create_account_cubit/create_account_cubit.dart';
-import 'package:flutter_amazon_app/features/auth/business_logic/sign_in_cubit/sign_in_cubit.dart';
-import 'package:flutter_amazon_app/features/auth/data/repository/create_account_repository.dart';
-import 'package:flutter_amazon_app/features/auth/data/repository/sign_in_repository.dart';
 import 'package:flutter_amazon_app/features/cart/business_logic/cubit/cart_cubit.dart';
 import 'package:flutter_amazon_app/features/cart/data/repository/cart_repository.dart';
 import 'package:flutter_amazon_app/features/category/business_logic/cubit/category_cubit.dart';
@@ -18,7 +14,6 @@ import 'package:flutter_amazon_app/features/home/business_logic/cubit/user_auth_
 import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_amazon_app/features/product/business_logic/cubit/product_cubit.dart';
 import 'package:flutter_amazon_app/features/product/data/repository/product_repository.dart';
-
 import 'package:flutter_amazon_app/firebase_options.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -49,17 +44,17 @@ class MyApp extends StatelessWidget {
                   ..getAllCategories(),
             child: Container(),
           ),
-          BlocProvider(create:(context)=> ProductCubit(ProductRepository(FirebaseFirestore.instance))..getAllProducts(),),
           BlocProvider(
-            create: (context) => CreateAccountCubit(CreateAccountRepository(FirebaseAuth.instance, FirebaseFirestore.instance)),
+            create: (context) =>
+                ProductCubit(ProductRepository(FirebaseFirestore.instance))
+                  ..getAllProducts(),
           ),
-           BlocProvider(
-            create: (context) => UserAuthStateCubit()..userAuthState()),
-            BlocProvider(
-            create: (context) => CartCubit(CartRepository(FirebaseFirestore.instance, FirebaseAuth.instance))..getCartProducts()),
           BlocProvider(
-            create: (context) => SignInCubit(SignInRepository(FirebaseAuth.instance)),
-          ),
+              create: (context) => UserAuthStateCubit()..userAuthState()),
+          BlocProvider(
+              create: (context) => CartCubit(CartRepository(
+                  FirebaseFirestore.instance, FirebaseAuth.instance))
+                ..getCartProducts()),
         ],
         child: ScreenUtilInit(
             designSize: const Size(360, 690),
@@ -72,7 +67,6 @@ class MyApp extends StatelessWidget {
                 title: 'Amazon app',
                 theme: AppTheme.theme(),
                 debugShowCheckedModeBanner: false,
-                
               );
             }));
   }

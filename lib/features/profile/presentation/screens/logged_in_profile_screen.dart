@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/utils/service_locator.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_button.dart';

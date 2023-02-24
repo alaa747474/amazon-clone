@@ -1,17 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
-import 'package:flutter_amazon_app/features/cart/presentation/screens/logged_in_cart_screen.dart';
+
 import 'package:flutter_amazon_app/features/home/business_logic/cubit/user_auth_state_cubit.dart';
-import 'package:flutter_amazon_app/features/profile/business_logic/cubit/user_profile_cubit.dart';
-import 'package:flutter_amazon_app/features/profile/data/repository/user_profile_repository.dart';
+
 import 'package:flutter_amazon_app/features/profile/presentation/screens/logged_in_profile_screen.dart';
 import 'package:flutter_amazon_app/features/profile/presentation/screens/not_logged_in_profile_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/utils/service_locator.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

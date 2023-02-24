@@ -1,5 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/utils/service_locator.dart';
 import 'package:flutter_amazon_app/features/auth/business_logic/create_account_cubit/create_account_cubit.dart';
@@ -54,14 +53,10 @@ class AppRouter {
             builder: (_) => MultiBlocProvider(
                   providers: [
                     BlocProvider(
-                      create: (context) => CreateAccountCubit(
-                          CreateAccountRepository(FirebaseAuth.instance,
-                              FirebaseFirestore.instance)),
+                      create: (context) => CreateAccountCubit(getIt.get<CreateAccountRepository>()),
                     ),
                     BlocProvider(
-                      create: (context) => SignInCubit(SignInRepository(
-                        FirebaseAuth.instance,
-                      )),
+                      create: (context) => SignInCubit(getIt.get<SignInRepository>()),
                     ),
                   ],
                   child: SignInScreen(

@@ -48,7 +48,6 @@ class DiscountContainer extends StatelessWidget {
                         crossAxisSpacing: 5.h),
                     itemCount: 4,
                     itemBuilder: (BuildContext context, int index) {
-                      //TODO: Product Details Screen
                       return InkWell(
                         onTap: ()=>Navigator.pushNamed(context, ProductDetailsScreen.routeName,arguments: discountProducts[index]),
                         child: Image.network(discountProducts[index].image));

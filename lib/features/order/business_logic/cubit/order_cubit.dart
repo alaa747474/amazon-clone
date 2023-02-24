@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_amazon_app/features/cart/business_logic/cubit/cart_cubit.dart';
 import 'package:flutter_amazon_app/features/order/data/model/order_model.dart';
 import 'package:flutter_amazon_app/features/order/data/repository/order_repositoey.dart';
 

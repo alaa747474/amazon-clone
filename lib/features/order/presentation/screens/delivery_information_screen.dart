@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_button.dart';
@@ -24,15 +24,16 @@ class DeliveryInformationScreen extends StatefulWidget {
   static const String routeName = '/delivery_information_screen';
 
   @override
-  State<DeliveryInformationScreen> createState() => _DeliveryInformationScreenState();
+  State<DeliveryInformationScreen> createState() =>
+      _DeliveryInformationScreenState();
 }
 
 class _DeliveryInformationScreenState extends State<DeliveryInformationScreen> {
-  final TextEditingController fullNameController=TextEditingController();
-  final TextEditingController phoneNumberController=TextEditingController();
-  final TextEditingController cityController=TextEditingController();
-  final TextEditingController addressController=TextEditingController();
-  final TextEditingController countryController=TextEditingController();
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController cityController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController countryController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,40 +60,45 @@ class _DeliveryInformationScreenState extends State<DeliveryInformationScreen> {
         padding: EdgeInsets.all(15.r),
         children: [
           CustomTextField(
-            
-              title: 'Full Name ',
-              textEditingController: fullNameController),
+              title: 'Full Name ', textEditingController: fullNameController),
           CustomTextField(
-              title: 'Address',
-              textEditingController: addressController),
+              title: 'Address', textEditingController: addressController),
           CustomTextField(
-              title: 'Town/City',
-              textEditingController: cityController),
+              title: 'Town/City', textEditingController: cityController),
           CustomTextField(
-              title: 'Country',
-              textEditingController: countryController),
+              title: 'Country', textEditingController: countryController),
           CustomTextField(
-            phoneNumberType: true,
+              phoneNumberType: true,
               title: 'Phone Number',
-              textEditingController:phoneNumberController),
+              textEditingController: phoneNumberController),
           BlocConsumer<OrderCubit, OrderState>(
-            listener:(context, state) {
+            listener: (context, state) {
               if (state is OrderConfirmationDone) {
-               
+                context.read<CartCubit>().deleteCart();
                 context.read<HomeCubit>().changeIndex(0);
-                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
-                 
+                Navigator.pushNamedAndRemoveUntil(
+                    context, HomeScreen.routeName, (route) => false);
               }
             },
             builder: (context, state) {
               if (state is OrderConfirmationLoading) {
                 return const LoadingIndicator();
               }
-              return CustomButton(text: 'Use this address', onPressed: () {
-                final order =OrderModel(fullNameController.text, phoneNumberController.text, cityController.text, addressController.text, widget.total, widget.products, countryController.text);
-                context.read<OrderCubit>().orderConfirmation(orderModel:order);
-               
-              });
+              return CustomButton(
+                  text: 'Use this address',
+                  onPressed: () {
+                    final order = OrderModel(
+                        fullNameController.text,
+                        phoneNumberController.text,
+                        cityController.text,
+                        addressController.text,
+                        widget.total,
+                        widget.products,
+                        countryController.text);
+                    context
+                        .read<OrderCubit>()
+                        .orderConfirmation(orderModel: order);
+                  });
             },
           )
         ],

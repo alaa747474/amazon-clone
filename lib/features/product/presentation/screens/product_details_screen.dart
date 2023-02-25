@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/utils/custom_snakbar.dart';
-
 import 'package:flutter_amazon_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_button.dart';
 import 'package:flutter_amazon_app/core/widgets/custom_search_field.dart';

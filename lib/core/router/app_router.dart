@@ -13,6 +13,7 @@ import 'package:flutter_amazon_app/features/order/data/repository/order_reposito
 import 'package:flutter_amazon_app/features/order/presentation/screens/delivery_information_screen.dart';
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
 import 'package:flutter_amazon_app/features/category/presentation/screens/best_seller_category_screen.dart';
+import 'package:flutter_amazon_app/features/product/presentation/screens/custom_category_products.dart';
 
 import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';
 import 'package:flutter_amazon_app/features/product/presentation/screens/products_screen.dart';
@@ -21,6 +22,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AppRouter {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      
+      case CustomCategoryProductsScreen.routeName:
+        final categoryName = settings.arguments as String;
+        return MaterialPageRoute(
+            builder: (_) => CustomCategoryProductsScreen(categoryName: categoryName,));
       case ProductsScreen.routeName:
         final products = settings.arguments as List<Product>;
         return MaterialPageRoute(
@@ -47,8 +53,7 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => const BestSellerCategoryScreen());
       case SignInScreen.routeName:
-        final signInArgs = settings.arguments as SignInScreen;
-
+        final signInArgs = settings.arguments as SignInScreen;   
         return MaterialPageRoute(
             builder: (_) => MultiBlocProvider(
                   providers: [

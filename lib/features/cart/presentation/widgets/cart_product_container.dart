@@ -51,7 +51,7 @@ class CartProductContainer extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 10.h,),
+            SizedBox(height: 20.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -76,7 +76,7 @@ class CartProductContainer extends StatelessWidget {
                     context.read<CartCubit>().deleteAllProductQuantities(product: cartProduct);
                   },
                   child: const CartDeleteButton()),
-                   SizedBox(width: 40.h,)
+                   SizedBox(width: 30.w,)
               ],
             ),
           ],

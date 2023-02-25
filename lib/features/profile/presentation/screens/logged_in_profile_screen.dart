@@ -51,7 +51,9 @@ class LoggedInProfileScreen extends StatelessWidget {
                               : index == 2
                                   ? 'Your Account'
                                   : 'Your List',
-                      onPressed: () {});
+                      onPressed: index==1?(){
+                        context.read<HomeCubit>().changeIndex(0);
+                      }:(){});
                 },
               ),
             ),

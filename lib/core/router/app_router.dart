@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/utils/service_locator.dart';
 import 'package:flutter_amazon_app/features/auth/business_logic/create_account_cubit/create_account_cubit.dart';
@@ -17,16 +16,19 @@ import 'package:flutter_amazon_app/features/product/presentation/screens/custom_
 
 import 'package:flutter_amazon_app/features/product/presentation/screens/product_details_screen.dart';
 import 'package:flutter_amazon_app/features/product/presentation/screens/products_screen.dart';
+import 'package:flutter_amazon_app/features/search/business_logic/cubit/search_cubit.dart';
+import 'package:flutter_amazon_app/features/search/presentation/screens/search_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      
       case CustomCategoryProductsScreen.routeName:
         final categoryName = settings.arguments as String;
         return MaterialPageRoute(
-            builder: (_) => CustomCategoryProductsScreen(categoryName: categoryName,));
+            builder: (_) => CustomCategoryProductsScreen(
+                  categoryName: categoryName,
+                ));
       case ProductsScreen.routeName:
         final products = settings.arguments as List<Product>;
         return MaterialPageRoute(
@@ -49,19 +51,24 @@ class AppRouter {
                       products: deliveryInformationArgs.products,
                       total: deliveryInformationArgs.total),
                 ));
+      case SearchScreen.routeName:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(create: (context) => SearchCubit(),child: const SearchScreen(),));
       case BestSellerCategoryScreen.routeName:
         return MaterialPageRoute(
             builder: (_) => const BestSellerCategoryScreen());
       case SignInScreen.routeName:
-        final signInArgs = settings.arguments as SignInScreen;   
+        final signInArgs = settings.arguments as SignInScreen;
         return MaterialPageRoute(
             builder: (_) => MultiBlocProvider(
                   providers: [
                     BlocProvider(
-                      create: (context) => CreateAccountCubit(getIt.get<CreateAccountRepository>()),
+                      create: (context) => CreateAccountCubit(
+                          getIt.get<CreateAccountRepository>()),
                     ),
                     BlocProvider(
-                      create: (context) => SignInCubit(getIt.get<SignInRepository>()),
+                      create: (context) =>
+                          SignInCubit(getIt.get<SignInRepository>()),
                     ),
                   ],
                   child: SignInScreen(

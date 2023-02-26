@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({super.key,required this.onChanged, required this.searchController});
+  const SearchField({super.key,required this.onChanged, required this.searchController, required this.clearSearchMethod});
  final void Function(String)? onChanged;
  final TextEditingController searchController;
+ final VoidCallback clearSearchMethod;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,6 +43,11 @@ class SearchField extends StatelessWidget {
                   Icons.search,
                   color: Theme.of(context).shadowColor,
                 ),
+                suffixIcon:IconButton(
+                icon: Icon(  Icons.clear,
+                  color: Theme.of(context).shadowColor,),
+                  onPressed: clearSearchMethod,
+                ) ,
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Theme.of(context).hintColor),
                     borderRadius: BorderRadius.circular(10.r)),

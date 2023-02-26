@@ -41,7 +41,7 @@ class CustomCategoryProductsScreen extends StatelessWidget {
               return GridView.builder(
                 padding: EdgeInsets.all(10.r),
                 gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 250.r,
+                  mainAxisExtent: 255.r,
                   crossAxisCount: 2,
                   mainAxisSpacing: 5.h,
                   crossAxisSpacing: 5.h

@@ -6,17 +6,20 @@ part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(SearchInitial());
-  List<Product>filtered=[];
+  List<Product> filtered = [];
   seatchFilter(
       {required String typedText, required List<Product> searchedList}) {
     filtered = searchedList
         .where((product) =>
             product.name.toLowerCase().startsWith(typedText) ||
-            product.category.toLowerCase().startsWith(typedText))
-        .toList();
+            product.name.toUpperCase().startsWith(typedText) ||
+            product.name.toLowerCase().contains(typedText) ||
+            product.name.toUpperCase().contains(typedText))
+          .toList();
     emit(SearchLoaded(filtered));
   }
-  clearList(){
+
+  clearList() {
     filtered.clear();
     emit(SearchLoaded(filtered));
   }

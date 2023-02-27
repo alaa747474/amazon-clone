@@ -8,11 +8,11 @@ import 'base_user_profile_repository.dart';
 class UserProfileRepository extends BaseUserProfileRepository {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firebaseFirestore;
-
+  final CollectionNames _collectionNames=CollectionNames.instance;
   UserProfileRepository(this._firebaseAuth, this._firebaseFirestore);
   @override
   Future<UserModel> getUserInformation() async{
-    var collection= await _firebaseFirestore.collection(usersCollection).doc(_firebaseAuth.currentUser!.uid).get();
+    var collection= await _firebaseFirestore.collection(_collectionNames.usersCollection).doc(_firebaseAuth.currentUser!.uid).get();
     return UserModel.fromMap(collection.data()!);
   }
   

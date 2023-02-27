@@ -4,7 +4,7 @@ import 'package:flutter_amazon_app/core/widgets/custom_button.dart';
 import 'package:flutter_amazon_app/core/widgets/loading_indicator.dart';
 import 'package:flutter_amazon_app/features/home/business_logic/cubit/home_cubit.dart';
 import 'package:flutter_amazon_app/features/profile/business_logic/cubit/user_profile_cubit.dart';
-import 'package:flutter_amazon_app/features/profile/data/repository/user_profile_repository.dart';
+
 import 'package:flutter_amazon_app/features/profile/presentation/widgets/keep_shopping_for_container.dart';
 import 'package:flutter_amazon_app/features/profile/presentation/widgets/profile_custom_button.dart';
 import 'package:flutter_amazon_app/features/profile/presentation/widgets/user_information_row.dart';
@@ -15,8 +15,8 @@ class LoggedInProfileScreen extends StatelessWidget {
   const LoggedInProfileScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>  UserProfileCubit(getIt.get<UserProfileRepository>())..getUserInformation(),
+    return BlocProvider.value(
+      value:  getIt.get<UserProfileCubit>()..getUserInformation(),
       child: Container(
         color: Theme.of(context).scaffoldBackgroundColor,
         child: ListView(

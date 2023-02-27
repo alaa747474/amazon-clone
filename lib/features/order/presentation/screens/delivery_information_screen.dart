@@ -61,16 +61,21 @@ class _DeliveryInformationScreenState extends State<DeliveryInformationScreen> {
         children: [
           CustomTextField(
               title: 'Full Name ', textEditingController: fullNameController),
+          SizedBox(height: 10.h,),    
           CustomTextField(
               title: 'Address', textEditingController: addressController),
+          SizedBox(height: 10.h,), 
           CustomTextField(
               title: 'Town/City', textEditingController: cityController),
+          SizedBox(height: 10.h,), 
           CustomTextField(
               title: 'Country', textEditingController: countryController),
+          SizedBox(height: 10.h,), 
           CustomTextField(
               phoneNumberType: true,
               title: 'Phone Number',
               textEditingController: phoneNumberController),
+              SizedBox(height: 20.h,),
           BlocConsumer<OrderCubit, OrderState>(
             listener: (context, state) {
               if (state is OrderConfirmationDone) {

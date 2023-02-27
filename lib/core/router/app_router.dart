@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/utils/service_locator.dart';
 import 'package:flutter_amazon_app/features/auth/business_logic/create_account_cubit/create_account_cubit.dart';
 import 'package:flutter_amazon_app/features/auth/business_logic/sign_in_cubit/sign_in_cubit.dart';
-import 'package:flutter_amazon_app/features/auth/data/repository/create_account_repository.dart';
-import 'package:flutter_amazon_app/features/auth/data/repository/sign_in_repository.dart';
+
 import 'package:flutter_amazon_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter_amazon_app/features/category/presentation/screens/categories_screen.dart';
 import 'package:flutter_amazon_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_amazon_app/features/order/business_logic/cubit/order_cubit.dart';
-import 'package:flutter_amazon_app/features/order/data/repository/order_repositoey.dart';
+
 import 'package:flutter_amazon_app/features/order/presentation/screens/delivery_information_screen.dart';
 import 'package:flutter_amazon_app/features/product/data/model/product.dart';
 import 'package:flutter_amazon_app/features/category/presentation/screens/best_seller_category_screen.dart';
@@ -46,14 +45,17 @@ class AppRouter {
             settings.arguments as DeliveryInformationScreen;
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
-                  create: (context) => OrderCubit(getIt.get<OrderRepository>()),
+                  create: (context) => getIt.get<OrderCubit>(),
                   child: DeliveryInformationScreen(
                       products: deliveryInformationArgs.products,
                       total: deliveryInformationArgs.total),
                 ));
       case SearchScreen.routeName:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(create: (context) => SearchCubit(),child: const SearchScreen(),));
+            builder: (_) => BlocProvider(
+                  create: (context) => SearchCubit(),
+                  child: const SearchScreen(),
+                ));
       case BestSellerCategoryScreen.routeName:
         return MaterialPageRoute(
             builder: (_) => const BestSellerCategoryScreen());
@@ -62,14 +64,8 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => MultiBlocProvider(
                   providers: [
-                    BlocProvider(
-                      create: (context) => CreateAccountCubit(
-                          getIt.get<CreateAccountRepository>()),
-                    ),
-                    BlocProvider(
-                      create: (context) =>
-                          SignInCubit(getIt.get<SignInRepository>()),
-                    ),
+                    BlocProvider(create: (context) => getIt.get<CreateAccountCubit>()),
+                    BlocProvider(create: (context) => getIt.get<SignInCubit>()),
                   ],
                   child: SignInScreen(
                     signInExpanded: signInArgs.signInExpanded,

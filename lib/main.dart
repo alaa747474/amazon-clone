@@ -1,12 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_app/core/router/app_router.dart';
 import 'package:flutter_amazon_app/core/utils/service_locator.dart';
 import 'package:flutter_amazon_app/core/utils/theme.dart';
-import 'package:flutter_amazon_app/features/cart/business_logic/cubit/cart_cubit.dart';
-import 'package:flutter_amazon_app/features/cart/data/repository/cart_repository.dart';
 import 'package:flutter_amazon_app/features/category/business_logic/cubit/category_cubit.dart';
 import 'package:flutter_amazon_app/features/category/data/repository/category_repository.dart';
 import 'package:flutter_amazon_app/features/home/business_logic/cubit/home_cubit.dart';
@@ -34,40 +30,35 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => HomeCubit(),
-          ),
-          BlocProvider(
-            create: (context) =>
-                CategoryCubit(CategoryRepository(FirebaseFirestore.instance))
-                  ..getAllCategories(),
-            child: Container(),
-          ),
-          BlocProvider(
-            create: (context) =>
-                ProductCubit(ProductRepository(FirebaseFirestore.instance))
-                  ..getAllProducts(),
-          ),
-          BlocProvider(
-              create: (context) => UserAuthStateCubit()..userAuthState()),
-          BlocProvider(
-              create: (context) => CartCubit(CartRepository(
-                  FirebaseFirestore.instance, FirebaseAuth.instance))
-                ..getCartProducts()),
-        ],
-        child: ScreenUtilInit(
-            designSize: const Size(360, 690),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            builder: (context, child) {
-              return MaterialApp(
-                onGenerateRoute: AppRouter.generateRoute,
-                initialRoute: HomeScreen.routeName,
-                title: 'Amazon app',
-                theme: AppTheme.theme(),
-                debugShowCheckedModeBanner: false,
-              );
-            }));
+      providers: [
+        BlocProvider(
+          create: (context) => HomeCubit(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              CategoryCubit(CategoryRepository())..getAllCategories(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ProductCubit(ProductRepository())..getAllProducts(),
+        ),
+        BlocProvider(
+            create: (context) => UserAuthStateCubit()..userAuthState()),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp(
+            onGenerateRoute: AppRouter.generateRoute,
+            initialRoute: HomeScreen.routeName,
+            title: 'Amazon app',
+            theme: AppTheme.theme(),
+            debugShowCheckedModeBanner: false,
+          );
+        },
+      ),
+    );
   }
 }

@@ -1,17 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_amazon_app/core/constants/constants.dart';
+import 'package:flutter_amazon_app/core/utils/firestore_service.dart';
 import 'package:flutter_amazon_app/features/category/data/repository/base_category_repository.dart';
 import 'package:flutter_amazon_app/features/category/data/model/category.dart';
 
 class CategoryRepository extends BaseCategoryRepository {
-  final FirebaseFirestore _firebaseFirestore;
-
-  CategoryRepository(this._firebaseFirestore);
+  final CollectionNames _collectionNames=CollectionNames.instance;
   @override
-  Future<List<Category>> getAllCategories()async {
-  var categories=await _firebaseFirestore.collection(categoriesCollection).get();
-  return categories.docs.map((e) => Category.fromJson(e.data())).toList();
-  
+  Future<List<Category>> getAllCategories() async {
+    return FireStoreService.instance.getCollectionData(
+        collection: _collectionNames.categoriesCollection,
+        builder: (data) => Category.fromJson(data!));
   }
-  
 }

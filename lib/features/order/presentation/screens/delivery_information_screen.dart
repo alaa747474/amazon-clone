@@ -51,7 +51,7 @@ class _DeliveryInformationScreenState extends State<DeliveryInformationScreen> {
             ),
             Text(
               'Enter a delivery address',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.labelMedium,
             ),
           ],
         ),

@@ -36,7 +36,7 @@ class SearchField extends StatelessWidget {
             decoration: InputDecoration(
                 hintStyle: Theme.of(context)
                     .textTheme
-                    .headline3!
+                    .labelSmall!
                     .copyWith(color: Theme.of(context).hintColor),
                 hintText: 'Search Amazon',
                 prefixIcon: Icon(

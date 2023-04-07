@@ -18,11 +18,11 @@ class UserInformationRow extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-              Theme.of(context).backgroundColor,
-              Theme.of(context).backgroundColor.withOpacity(0.9),
-              Theme.of(context).backgroundColor.withOpacity(0.8),
-              Theme.of(context).backgroundColor.withOpacity(0.7),
-              Theme.of(context).backgroundColor.withOpacity(0.4),
+              Theme.of(context).secondaryHeaderColor,
+              Theme.of(context).secondaryHeaderColor.withOpacity(0.9),
+              Theme.of(context).secondaryHeaderColor.withOpacity(0.8),
+              Theme.of(context).secondaryHeaderColor.withOpacity(0.7),
+              Theme.of(context).secondaryHeaderColor.withOpacity(0.4),
               Theme.of(context).primaryColorLight.withOpacity(0.5),
               Theme.of(context).primaryColorLight
             ])),
@@ -37,12 +37,12 @@ class UserInformationRow extends StatelessWidget {
                     'Hello,',
                     style: Theme.of(context)
                         .textTheme
-                        .headline2!
+                        .labelMedium!
                         .copyWith(fontWeight: FontWeight.normal),
                   ),
                   Text(
                     userName,
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ],
               ),

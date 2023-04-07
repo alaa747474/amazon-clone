@@ -30,7 +30,7 @@ class SuggestionProductsContainer extends StatelessWidget {
               children: [
                 Text(
                   'You might also like',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 SizedBox(
                   height: 10.h,
@@ -62,7 +62,7 @@ class SuggestionProductsContainer extends StatelessWidget {
                                     Text(
                                       suggestionList[index].name,
                                       style:
-                                          Theme.of(context).textTheme.headline5,
+                                          Theme.of(context).textTheme.titleMedium,
                                       softWrap: true,
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 3,
@@ -72,7 +72,7 @@ class SuggestionProductsContainer extends StatelessWidget {
                                 Text('\$${suggestionList[index].price}',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .headline4!
+                                        .titleLarge!
                                         .copyWith(color: Colors.red[700]))
                               ],
                             ),

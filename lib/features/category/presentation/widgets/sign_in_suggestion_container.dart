@@ -21,7 +21,7 @@ class SignInSuggestionContainer extends StatelessWidget {
         children: [
           Text(
             'Sign in for the best experience',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.labelMedium,
           ),
           CustomButton(
             elevation: 1,
@@ -33,7 +33,7 @@ class SignInSuggestionContainer extends StatelessWidget {
             'create an account',
             style: Theme.of(context)
                 .textTheme
-                .headline4!
+                .titleLarge!
                 .copyWith(color: Theme.of(context).focusColor),
           ),
         ],

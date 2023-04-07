@@ -33,7 +33,7 @@ class LoggedInCartScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Subtotal \$${state.cart.total}',
-                    style: Theme.of(context).textTheme.headline3,
+                    style: Theme.of(context).textTheme.labelSmall,
                   ),
                 ),
                 Padding(

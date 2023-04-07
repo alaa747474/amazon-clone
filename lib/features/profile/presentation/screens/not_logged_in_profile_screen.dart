@@ -14,7 +14,7 @@ class NotLoggedInProfileScreen extends StatelessWidget {
       'assets/images/list.png'
     ];
     List<String> titles = [
-      'Check order status and track, \nchange or return items',
+      'Check order status and \ntrack, change or \nreturn items',
       'Shop past purcases and \neveryday essentials',
       'Create list items you\nwant, now or later'
     ];
@@ -28,10 +28,10 @@ class NotLoggedInProfileScreen extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                  Theme.of(context).backgroundColor,
-                  Theme.of(context).backgroundColor.withOpacity(0.8),
-                  Theme.of(context).backgroundColor.withOpacity(0.7),
-                  Theme.of(context).backgroundColor.withOpacity(0.4),
+                  Theme.of(context).secondaryHeaderColor,
+                  Theme.of(context).secondaryHeaderColor.withOpacity(0.8),
+                  Theme.of(context).secondaryHeaderColor.withOpacity(0.7),
+                  Theme.of(context).secondaryHeaderColor.withOpacity(0.4),
                   Theme.of(context).primaryColorLight.withOpacity(0.2),
                   Theme.of(context).primaryColorLight
                 ])),
@@ -39,7 +39,7 @@ class NotLoggedInProfileScreen extends StatelessWidget {
               'Sign in for the best \n experience',
               style: Theme.of(context)
                   .textTheme
-                  .headline2!
+                  .labelMedium!
                   .copyWith(fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             )),
@@ -93,7 +93,7 @@ class NotLoggedInProfileScreen extends StatelessWidget {
                     Text(
                       titles[index],
                       textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.headline3,
+                      style: Theme.of(context).textTheme.labelSmall,
                     )
                   ],
                 ),

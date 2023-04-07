@@ -14,7 +14,7 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         SizedBox(
           height: 5.h,

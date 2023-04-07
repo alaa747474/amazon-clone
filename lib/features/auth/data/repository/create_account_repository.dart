@@ -7,7 +7,7 @@ import 'package:flutter_amazon_app/features/auth/data/repository/base_create_acc
 class CreateAccountRepository extends BaseCreateAccountRepository {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firebaseFirestore;
-   final CollectionNames _collectionNames=CollectionNames.instance;
+  final CollectionNames _collectionNames = CollectionNames.instance;
   CreateAccountRepository(this._firebaseAuth, this._firebaseFirestore);
   @override
   Future<void> createAccount({required UserModel userModel}) async {

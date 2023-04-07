@@ -49,13 +49,13 @@ class ProductDetailsScreen extends StatelessWidget {
                 children: [
                   Text(
                     product.category,
-                    style: Theme.of(context).textTheme.headline3,
+                    style: Theme.of(context).textTheme.labelSmall,
                   ),
                   Text(
                     product.name,
                     style: Theme.of(context)
                         .textTheme
-                        .headline6!
+                        .titleSmall!
                         .copyWith(color: Colors.grey),
                   ),
                 ],
@@ -85,7 +85,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     '\$ ${product.price}',
                     style: Theme.of(context)
                         .textTheme
-                        .headline1!
+                        .labelLarge!
                         .copyWith(fontWeight: FontWeight.normal),
                   ),
                   SizedBox(
@@ -93,7 +93,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   ),
                   Text(
                     product.name,
-                    style: Theme.of(context).textTheme.headline3,
+                    style: Theme.of(context).textTheme.labelSmall,
                   ),
                   SizedBox(
                     height: 5.h,
@@ -103,7 +103,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           'Best Seller !',
                           style: Theme.of(context)
                               .textTheme
-                              .headline4!
+                              .titleLarge!
                               .copyWith(color: Colors.red[700]),
                         )
                       : const SizedBox(),

@@ -19,7 +19,7 @@ class KeepShoppingForContainer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Keep shopping for',style: Theme.of(context).textTheme.headline2),
+              Text('Keep shopping for',style: Theme.of(context).textTheme.labelMedium),
               Expanded(
                 child: GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
@@ -55,7 +55,7 @@ class KeepShoppingForContainer extends StatelessWidget {
                                 child: Image.network(state.products[index].image,),
                               ),
                              ),
-                              Text(state.products[index].name,style: Theme.of(context).textTheme.headline6,overflow: TextOverflow.ellipsis,)
+                              Text(state.products[index].name,style: Theme.of(context).textTheme.titleSmall,overflow: TextOverflow.ellipsis,)
                           ],
                         ),
                       );

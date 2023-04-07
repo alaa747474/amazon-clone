@@ -9,47 +9,49 @@ part 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit(this._cartRepository) : super(CartInitial());
   final CartRepository _cartRepository;
-  
-   Map cartProductQuantity(List<Product>products){
-    Map quantity={};
+
+  Map cartProductQuantity(List<Product> products) {
+    Map quantity = {};
     for (var product in products) {
       if (!quantity.containsKey(product.id)) {
-        quantity[product.id]=1;
-      }else{
-        quantity[product.id]+=1;
+        quantity[product.id] = 1;
+      } else {
+        quantity[product.id] += 1;
       }
     }
     return quantity;
   }
 
-  addToCart({required Product product}){
+  void addToCart({required Product product}) {
     _cartRepository.addProductToCart(product: product).then((value) {
-     emit(ProductAddedToCart());
+      emit(ProductAddedToCart());
       getCartProducts();
     });
   }
-  removeFromCart({required Product product}){
+
+  void removeFromCart({required Product product}) {
     _cartRepository.removeProductFromCart(product: product).then((value) {
       emit(ProductRemovedFromCart());
-       getCartProducts();
+      getCartProducts();
     });
   }
-  deleteAllProductQuantities({required Product product}){
+
+  void deleteAllProductQuantities({required Product product}) {
     _cartRepository.deleteAllProductQuantities(product: product).then((value) {
       emit(ProductRemovedFromCart());
-       getCartProducts();
+      getCartProducts();
     });
   }
-  
-  getCartProducts(){
+
+  void getCartProducts() {
     _cartRepository.getCartProducts().then((value) {
       emit(CartProductsLoaded(Cart(value)));
     });
   }
-  deleteCart()async{
-   await _cartRepository.deleteCart().then((value) {
+
+  void deleteCart() async {
+    await _cartRepository.deleteCart().then((value) {
       getCartProducts();
     });
-
   }
 }

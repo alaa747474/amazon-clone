@@ -12,11 +12,19 @@ import 'package:flutter_amazon_app/features/profile/business_logic/cubit/user_pr
 import 'package:flutter_amazon_app/features/profile/data/repository/user_profile_repository.dart';
 import 'package:get_it/get_it.dart';
 
-final getIt = GetIt.instance;
+GetIt getIt = GetIt.instance;
 void serviceLocatorSetUp() {
-  getIt.registerSingleton<UserProfileCubit>(UserProfileCubit(UserProfileRepository(FirebaseAuth.instance,FirebaseFirestore.instance)));
+  getIt.registerSingleton<UserProfileCubit>(UserProfileCubit(
+      UserProfileRepository(
+          FirebaseAuth.instance, FirebaseFirestore.instance)));
   getIt.registerSingleton<OrderCubit>(OrderCubit(OrderRepository()));
-  getIt.registerSingleton<SignInCubit>(SignInCubit(SignInRepository(FirebaseAuth.instance)));
-  getIt.registerSingleton<CreateAccountCubit>(CreateAccountCubit(CreateAccountRepository(FirebaseAuth.instance,FirebaseFirestore.instance)));
-  getIt.registerSingleton<CartCubit>(CartCubit(CartRepository(FirebaseFirestore.instance, FirebaseAuth.instance)));
+  getIt.registerSingleton<SignInCubit>(
+      SignInCubit(SignInRepository(FirebaseAuth.instance)));
+  getIt.registerSingleton<CreateAccountCubit>(CreateAccountCubit(
+      CreateAccountRepository(
+          FirebaseAuth.instance, FirebaseFirestore.instance)));
+  getIt.registerSingleton<CartCubit>(CartCubit(
+      CartRepository(FirebaseFirestore.instance, FirebaseAuth.instance)));
+  getIt.registerSingleton<SignInRepository>(
+      SignInRepository(FirebaseAuth.instance));
 }

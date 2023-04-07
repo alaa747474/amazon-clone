@@ -40,7 +40,7 @@ class CustomSearchField extends StatelessWidget {
                       'Search Amazon',
                       style: Theme.of(context)
                           .textTheme
-                          .headline3!
+                          .labelSmall!
                           .copyWith(color: Theme.of(context).hintColor),
                     )
                   ],

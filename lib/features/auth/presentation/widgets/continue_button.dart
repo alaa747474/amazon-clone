@@ -17,7 +17,7 @@ class CustomSignInButton extends StatelessWidget {
             elevation: 0,
             backgroundColor: color),
         onPressed: onPressed,
-        child: Text(text, style: Theme.of(context).textTheme.headline3),
+        child: Text(text, style: Theme.of(context).textTheme.labelSmall),
       ),
     );
   }

@@ -37,7 +37,7 @@ class CategoryStack extends StatelessWidget {
                     'Essentials \nfor Games',
                     style: Theme.of(context)
                         .textTheme
-                        .headline1!
+                        .labelLarge!
                         .copyWith(color: Colors.white),
                   )),
               Positioned(

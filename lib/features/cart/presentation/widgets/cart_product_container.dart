@@ -42,10 +42,10 @@ class CartProductContainer extends StatelessWidget {
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         softWrap: true,
-                        style: Theme.of(context).textTheme.headline4,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(height: 10.h,),
-                      Text('\$${cartProduct.price}',style: Theme.of(context).textTheme.headline4,),
+                      Text('\$${cartProduct.price}',style: Theme.of(context).textTheme.titleLarge,),
                     ],
                   ),
                 )

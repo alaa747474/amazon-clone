@@ -27,18 +27,18 @@ class NotLoggedInCartScreen extends StatelessWidget {
               'Your Amazon Cart is empty',
               style: Theme.of(context)
                   .textTheme
-                  .headline1!
+                  .labelLarge!
                   .copyWith(fontSize: 25.sp),
             ),
             Text(
               'Nothing in here. Only possibilities',
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             SizedBox(
               height: 5.h,
             ),
             Text('Shop today\'s deals',
-                style: Theme.of(context).textTheme.bodyText2),
+                style: Theme.of(context).textTheme.bodyMedium),
             SizedBox(
               height: 20.h,
             ),

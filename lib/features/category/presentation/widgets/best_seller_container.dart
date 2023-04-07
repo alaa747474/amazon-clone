@@ -28,7 +28,7 @@ class BestSellerProducstContainer extends StatelessWidget {
               children: [
                 Text(
                   'Best Seller',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 Flexible(
                   flex: 8,
@@ -63,12 +63,12 @@ class BestSellerProducstContainer extends StatelessWidget {
                                   '\$${bestSellerProducts[index].price}',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headline4
+                                      .titleLarge
                                 ),
                                 Text(
                                   bestSellerProducts[index].name,
                                   overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(context).textTheme.headline4,
+                                  style: Theme.of(context).textTheme.titleLarge,
                                 ),
                                   ],
                                 )
@@ -84,7 +84,7 @@ class BestSellerProducstContainer extends StatelessWidget {
                   onTap: ()=>Navigator.pushNamed(context, BestSellerCategoryScreen.routeName),
                   child: Text(
                     'Sea all daels',
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 )
               ],

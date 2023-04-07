@@ -33,7 +33,7 @@ class DiscountContainer extends StatelessWidget {
               children: [
                 Text(
                   '$category Under $price\$',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 Flexible(
                   flex: 8,
@@ -58,7 +58,7 @@ class DiscountContainer extends StatelessWidget {
                   onTap: ()=>Navigator.pushNamed(context, ProductsScreen.routeName,arguments: discountProducts),
                   child: Text(
                     'Sea more',
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
               ],

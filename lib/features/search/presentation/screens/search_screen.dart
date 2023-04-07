@@ -80,7 +80,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             vertical: 5.h, horizontal: 10.w),
                         child: Text(
                           state.filtered[index].name,
-                          style: Theme.of(context).textTheme.headline3,
+                          style: Theme.of(context).textTheme.labelSmall,
                           maxLines: 1,
                         ),
                       ),

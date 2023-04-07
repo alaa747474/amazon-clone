@@ -8,7 +8,7 @@ class CustomErrorwidget extends StatelessWidget {
     return Center(
       child: Text(
         'Something went Wrong',
-        style: Theme.of(context).textTheme.headline3,
+        style: Theme.of(context).textTheme.labelSmall,
       ),
     );
   }

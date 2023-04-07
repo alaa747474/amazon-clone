@@ -38,7 +38,7 @@ class ProductsScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
             child: Text(
               'Results',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.labelMedium,
             ),
           ),
           Expanded(

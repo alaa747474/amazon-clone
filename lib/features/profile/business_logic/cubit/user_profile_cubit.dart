@@ -9,7 +9,7 @@ part 'user_profile_state.dart';
 class UserProfileCubit extends Cubit<UserProfileState> {
   UserProfileCubit(this._profileRepository) : super(UserProfileInitial());
   final UserProfileRepository _profileRepository;
-  getUserInformation()async{
+  getUserInformation() async {
     try {
       _profileRepository.getUserInformation().then((value) {
         emit(UserInformationLoaded(value));

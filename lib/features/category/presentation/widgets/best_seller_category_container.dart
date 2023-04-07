@@ -26,7 +26,7 @@ class BestSellerCategoryContainer extends StatelessWidget {
                       'Best Seller Deals',
                       style: Theme.of(context)
                           .textTheme
-                          .headline1!
+                          .labelLarge!
                           .copyWith(fontSize: 25.sp),
                     ),
                     SizedBox(
@@ -35,7 +35,7 @@ class BestSellerCategoryContainer extends StatelessWidget {
                     Center(
                         child: Text(
                       'MUST-SEE DEALS',
-                      style: Theme.of(context).textTheme.headline2,
+                      style: Theme.of(context).textTheme.labelMedium,
                     )),
                     SizedBox(
                       height: 10.h,
@@ -69,7 +69,7 @@ class BestSellerCategoryContainer extends StatelessWidget {
           ),
           Text(
             category.name,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.labelMedium,
           )
         ],
       ),

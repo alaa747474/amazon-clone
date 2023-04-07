@@ -23,7 +23,7 @@ class CartDeleteButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(5.r),
       ),
       child: Center(
-        child: Text('Delete',style: Theme.of(context).textTheme.bodyText1,),
+        child: Text('Delete',style: Theme.of(context).textTheme.bodyLarge,),
       )
     );
   }

@@ -40,15 +40,15 @@ class ProductContainer extends StatelessWidget {
               children: [
                  Text(
                   'Deal',
-                  style: Theme.of(context).textTheme.headline4!.copyWith(color: Colors.red[800]),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.red[800]),
                 ),
                 Text(
                   name,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
                 Text(
                   '\$ $price',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.labelMedium,
                 )
               ],
             ),

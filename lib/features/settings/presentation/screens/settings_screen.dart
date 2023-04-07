@@ -32,10 +32,10 @@ class SettingScreen extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                Theme.of(context).backgroundColor,
-                Theme.of(context).backgroundColor.withOpacity(0.8),
-                Theme.of(context).backgroundColor.withOpacity(0.7),
-                Theme.of(context).backgroundColor.withOpacity(0.4),
+                Theme.of(context).secondaryHeaderColor,
+                Theme.of(context).secondaryHeaderColor.withOpacity(0.8),
+                Theme.of(context).secondaryHeaderColor.withOpacity(0.7),
+                Theme.of(context).secondaryHeaderColor.withOpacity(0.4),
                 Theme.of(context).primaryColorLight.withOpacity(0.2),
                 Theme.of(context).primaryColorLight
               ])),

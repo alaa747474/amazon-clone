@@ -65,14 +65,14 @@ class LoggedInProfileScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Your Orders',
-                    style: Theme.of(context).textTheme.headline3,
+                    style: Theme.of(context).textTheme.labelSmall,
                   ),
                   SizedBox(
                     height: 10.h,
                   ),
                   Text(
                     'Hi,you hane no recent orders',
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                   SizedBox(
                     height: 5.h,

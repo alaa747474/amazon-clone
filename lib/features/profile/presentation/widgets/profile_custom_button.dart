@@ -20,7 +20,7 @@ class ProfileCustomButton extends StatelessWidget {
           side: BorderSide(color: Theme.of(context).hintColor, width: 1.r),
         ),
       ),
-      child: Text(buttonText,style: Theme.of(context).textTheme.headline6,),
+      child: Text(buttonText,style: Theme.of(context).textTheme.titleSmall,),
     );
   }
 }

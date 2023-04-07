@@ -36,7 +36,7 @@ class CustomSettingsContainer extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 text,
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme.of(context).textTheme.labelSmall,
               ),
             ),
           ),

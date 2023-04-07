@@ -28,13 +28,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
               
               colors:widget.appBarHeight<90 ?[
             Theme.of(context).primaryColor,
-            Theme.of(context).backgroundColor,
+            Theme.of(context).secondaryHeaderColor,
               ]: [
             Theme.of(context).primaryColor,
             Theme.of(context).primaryColor.withOpacity(0.8),
-            Theme.of(context).backgroundColor,
-            Theme.of(context).backgroundColor.withOpacity(0.9),
-            Theme.of(context).backgroundColor.withOpacity(0.8),
+            Theme.of(context).secondaryHeaderColor,
+            Theme.of(context).secondaryHeaderColor.withOpacity(0.9),
+            Theme.of(context).secondaryHeaderColor.withOpacity(0.8),
             Theme.of(context).scaffoldBackgroundColor
           ])),
       child: widget.child,

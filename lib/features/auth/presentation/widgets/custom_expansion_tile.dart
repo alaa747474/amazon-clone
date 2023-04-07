@@ -26,7 +26,7 @@ class CustomExpansionTile extends StatelessWidget {
         key: key,
         title: Text(
           title,
-          style: Theme.of(context).textTheme.headline3,
+          style: Theme.of(context).textTheme.labelSmall,
         ),
         children: [
           Container(
@@ -41,10 +41,10 @@ class CustomExpansionTile extends StatelessWidget {
             child: RichText(text: TextSpan(
               text: '',
               children: [
-                TextSpan(text: 'By continuing, you agree to ',style: Theme.of(context).textTheme.headline3,),
-                TextSpan(text: ' Amazon\'s Conditions',style: Theme.of(context).textTheme.headline3!.copyWith(color: Colors.blue),),
-                TextSpan(text: ' of Use and',style: Theme.of(context).textTheme.headline3),
-                TextSpan(text: ' Privacy Notice',style: Theme.of(context).textTheme.headline3!.copyWith(color: Colors.blue),),
+                TextSpan(text: 'By continuing, you agree to ',style: Theme.of(context).textTheme.labelSmall,),
+                TextSpan(text: ' Amazon\'s Conditions',style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.blue),),
+                TextSpan(text: ' of Use and',style: Theme.of(context).textTheme.labelSmall),
+                TextSpan(text: ' Privacy Notice',style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.blue),),
               ]
             )),
           )

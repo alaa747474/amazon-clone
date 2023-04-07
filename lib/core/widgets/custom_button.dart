@@ -27,6 +27,6 @@ class CustomButton extends StatelessWidget {
         backgroundColor: color,
         fixedSize: Size(MediaQuery.of(context).size.width,40.h)
       ),
-      onPressed: onPressed, child: Center(child: Text(text,style: Theme.of(context).textTheme.headline3 ,)));
+      onPressed: onPressed, child: Center(child: Text(text,style: Theme.of(context).textTheme.labelSmall ,)));
   }
 }

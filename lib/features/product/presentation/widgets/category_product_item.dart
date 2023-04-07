@@ -33,14 +33,14 @@ class CategoryProductItem extends StatelessWidget {
                 categoryProduct.name,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
               Text('\$${categoryProduct.price}',
-                  style: Theme.of(context).textTheme.headline4),
+                  style: Theme.of(context).textTheme.titleLarge),
               categoryProduct.bestSeller?Container(
                 width: 80.w,
                 color: Colors.red[700],
-                child: Center(child: Text('Best Seller',style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),),),
+                child: Center(child: Text('Best Seller',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),),),
               ):const SizedBox()
               ],
              )

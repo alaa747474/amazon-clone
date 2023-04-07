@@ -26,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
             children: [
               Text(
                 'Amazon',
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.labelMedium,
               ),
               IconButton(onPressed: () {}, icon: const Icon(Icons.search))
             ],

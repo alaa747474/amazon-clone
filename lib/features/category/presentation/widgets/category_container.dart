@@ -35,11 +35,11 @@ class CategoryContainer extends StatelessWidget {
               padding:  EdgeInsets.only(top: mqHeight*0.01, left: mqWidth*0.02),
               child: Text(
                 categoryName,
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme.of(context).textTheme.labelSmall,
               ),
             ),
             Container(
-              height: 130.h,
+              height: 122.h,
               width: double.maxFinite,
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
